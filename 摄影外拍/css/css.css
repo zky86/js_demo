@@ -1,0 +1,13 @@
+.ad-box{position:relative;height:70px;overflow:hidden;}
+.ad-box li{padding:5px 0 0 5px;width:780px;background:#18ae61;color:#fff;height:65px;}
+.ad-box .rbox{padding-left:15px;}
+.ad-box .rbox p{font-family:'Î¢ÈíÑÅºÚ','ºÚÌå','ËÎÌå';}
+.ad-box .rbox .p1{font-size:16px;}
+.ad-box .rbox .p2{font-size:22px;padding-top:3px;}
+.ad-box .close{position:absolute;right:10px;top:10px;}
+.ad-box .btn{position: absolute;right: 10px;bottom: 5px}
+.ad-box .btn a{display: inline-block;background: #666666;color: #fff;margin-right: 5px;   width: 20px;height: 20px;text-align: center;line-height: 20px;font-size: 14px; text-decoration: none; }
+
+
+
+

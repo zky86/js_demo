@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="gbk"/>
+    <script type="text/javascript" charset="gbk" src="http://static.yueus.com/yue_ui/vue/1.0.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+
+<ul id="example-1">
+    <div class="re" v-on:click="re">--</div>
+    <input type="text" v-model="num"  value="{{num}}">
+    <div class="add" v-on:click="add">++</div>
+</ul>
+
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example-1',
+        ready : function()
+        {
+            //this.$emit('fetch')
+        },
+        data : 
+        {
+            num : 1
+        },
+        computed : 
+        {
+
+        },
+        events :
+        {
+            
+        },
+        methods : 
+        {
+            re : function() 
+            {
+                vm.num--
+                console.log(vm.num);
+            },
+            add : function() 
+            {
+                vm.num++
+                console.log(vm.num);
+            }
+        },
+        components: {
+
+        }
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        // Array.prototype.uniqueFn = function () 
+        // {
+        //     var n = [] ;
+        //     for (var i = 0; i < this.length; i++) {
+                
+        //         if (n.indexOf(this[i]) == -1 )
+        //         {
+        //             n.push(this[i])
+        //         };
+        //     };
+        //     return  n ;
+        // }
+
+
+
+        Array.prototype.uniqueFn = function () 
+        {
+            var n = [this[0]];
+            for(var i = 1; i < this.length; i++) //从第二项开始遍历
+                {
+                    //如果当前数组的第i项在当前数组中第一次出现的位置不是i，
+                    //那么表示第i项是重复的，忽略掉。否则存入结果数组
+                    if (this.indexOf(this[i]) == i)     
+                    n.push(this[i]) ;
+                }
+            return  n ;
+        }
+
+        var arr = [ 1,2,4,4,5,6] ;
+        var new_arr =  arr.uniqueFn() ;
+
+        console.log( new_arr);
+
+
+    </script>
+</body>
+</html>   

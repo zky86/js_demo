@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+</head>
+<script type="text/javascript">
+
+
+
+        function reg_alipay_account (str) {
+            var str = str.toString();
+            var email = new RegExp(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/);
+            var email_test = email.test(str);
+            if (email_test)
+            {
+                var ret = str.replace(/[\d\w]{1,4}@{1}/g, "****@");
+                return ret;
+            }
+            else
+            {
+                var ret = str.replace(/[\d]{4}([\d]{4})$/g, "****$1");
+                return ret;
+            }
+        }
+
+
+        console.log( reg_alipay_account('zhengkangyuan@qq.com') )
+        console.log( reg_alipay_account(15975563431) )
+
+
+
+        // var str = "15975563431";
+        // var ret = str.replace(/[\d]{4}([\d]{4})$/g, "****$1");
+        // alert(ret);
+        
+</script>
+<body>
+</body>
+</html>   

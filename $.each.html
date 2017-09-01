@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="jquery.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+
+<style>
+*{
+    padding: 0px;
+    margin: 0px; 
+}   
+
+</style>
+
+
+<div class="test">1</div>
+<div class="test">2</div>
+<div class="test">3</div>
+<div class="test">4</div>
+<div class="test">5</div>
+<div class="test">6</div>
+<div class="test">7</div>
+<div class="test">8</div>
+<div class="test">9</div>
+<div class="test">10</div>
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+    var $ele = $('.test');
+
+    // $ele.each(function(i, val) {
+    //     $(val).attr('attribute', i);
+    // });
+
+    $.each($ele, function(i, val) {
+        $(val).attr('attribute', i);
+    });
+
+});
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+$(function() {
+    
+    var json = 
+    {
+        'list' : 
+        [
+            {'name' : 1},
+            {'name' : 2},
+            {'name' : 3},
+            {'name' : 4},
+            {'name' : 5}
+        ]
+    }
+
+    var arr = json.list
+
+    $.each(json.list, function(i, val) {
+        console.log(val);
+        // val.test = i;
+        $(val).attr('test', i);
+    });
+
+
+    console.log(arr);
+
+});
+   
+</script>
+
+
+
+
+</body>
+</html>

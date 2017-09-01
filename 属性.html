@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+    function Person(firstName, lastName, age)
+    {
+        //私有变量：
+        this._firstName = firstName;
+        var _lastName = lastName;
+
+        //公共变量:
+        this.age = age;
+
+        //方法：
+        this.getName = function()
+        {
+            return(firstName + " " + lastName);
+        };
+        this.SayHello = function()
+        {
+            alert("Hello, I'm " + firstName + " " + lastName);
+        };
+    };
+    
+    var BillGates = new Person("Bill", "Gates", 53);
+    //var SteveJobs = new Person("Steve", "Jobs", 53);
+    //BillGates.SayHello();
+    //SteveJobs.SayHello();
+    //alert(BillGates.getName() + " " + BillGates.age);
+    alert(BillGates._firstName);    
+</script>
+
+
+</body>
+</html>   

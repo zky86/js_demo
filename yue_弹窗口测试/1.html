@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/test.css" type="text/css" rel="stylesheet" />
+    <script src="./js/jquery-1.11.2.min.js"></script>
+</head>
+
+    <style type="text/css">
+        .btn{cursor: pointer; }
+    </style>
+
+<div>
+    <input type="text" name=" " id=" " class="input-text-1" value="欧美 情绪" />
+    <div class="btn" >选择修改风格</div>
+    <br />
+    <br />
+</div>
+
+<div>
+    <input type="text" name=" " id=" " class="input-text-2"   value="性感 街拍" />
+    <div class="btn" >选择修改风格</div>
+    <br />
+    <br />
+</div>
+
+
+    <div style="display:none" class="pop_sec_style font_wryh">
+        <div class="close"></div>
+        <div class="box1">
+            <span class="cor1">请选择风格</span>
+            <span class="cor2">(最多只能选择三个风格)</span>
+        </div>
+        <ul id="btn_style_check" class="list clearfix">
+
+        </ul>
+        <div class="box3">
+            <div id="btn_confirm" class="btn">确定</div>
+        </div>
+    </div>
+
+<body>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $('.btn').click(function() {
+        output_arr = [];
+
+        
+        
+        $('.pop_sec_style').show();
+        $(this).attr('option_btn', '1');
+    });
+
+    $('.close').click(function() {
+        $('.pop_sec_style').hide();      
+    });
+
+    var data = [
+        {
+            txt : '欧美',
+            classN : ''
+        },
+        {
+            txt : '情绪',
+            classN : ''
+        },
+        {
+            txt : '清新',
+            classN : ''
+        },
+        {
+            txt : '复古',
+            classN : ''
+        },
+        {
+            txt : '韩系',
+            classN : ''
+        },
+        {
+            txt : '日系',
+            classN : ''
+        },
+        {
+            txt : '性感',
+            classN : ''
+        },
+        {
+            txt : '街拍',
+            classN : ''
+        },
+        {
+            txt : '胶片',
+            classN : ''
+        },
+        {
+            txt : '商业',
+            classN : ''
+        }
+
+    ];
+
+    var str1 = $('.input-text-1').val();
+    var str2 = $('.input-text-2').val();
+
+    var arr1 = str1.split(' ');
+    var arr2 = str2.split(' ');
+
+    var newArr = arr1.concat(arr2);
+
+    var canShowArr = [] ;
+
+    var endShowArr = [] ;
+
+    var output_arr = [] ;
+
+    for (var i = 0; i < data.length; i++) {
+        if ( newArr.indexOf(data[i].txt) == -1  ) 
+        {
+            //新数组
+            canShowArr.push(data[i].txt);
+        }else{
+            //修改样式
+            data[i].classN = 'none' ;
+        }
+    };
+
+    $.each(data, function(index, val) {
+         $('#btn_style_check').append( '<li class="' + val.classN+ '">'+ val.txt +'</li>' )
+    });
+
+
+    var $ele = $('#btn_style_check li');
+    
+    $.each($ele, function(index, val) {
+         if ($(this).hasClass("none") ) 
+         {
+             
+         } 
+         else
+         {
+            $(this).attr('can_sel', index);
+            endShowArr.push($(this).html());
+         }
+    });
+
+    $('[can_sel]').click(function() {
+            $(this).toggleClass('cur');
+    });
+
+
+    $('#btn_confirm').click(function() {
+
+        $.each($ele, function(index, val) {
+             if ($(this).hasClass("cur") ) 
+             {
+                output_arr.push($(this).html());
+             } 
+        });
+
+        $('.pop_sec_style').hide();      
+        
+        //输入框显示值
+        $('[option_btn]').siblings().val(output_arr.join(' '))
+        // btn_jl.siblings().val(output_arr.join(' '))
+    });
+
+    
+});
+</script></body>
+</html>

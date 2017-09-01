@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<!-- <script src="js/.js"  type="text/javascript" ></script> -->
+</head>
+<body>
+
+<style type="text/css">
+
+*{
+    padding: 0;
+    margin: 0
+}
+#oBox{
+    width: 200px;
+    height: 100px;
+    background-color: #666;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="oBox">测试</div>
+
+
+
+<script type="text/javascript">
+
+    var oBox = document.getElementById("oBox");
+    var disX ,
+        disY ;
+
+    // test.onmousedown = function (event) 
+    // {
+    //    console.log(1);
+    // }
+
+    // test.onmousemove = function (event) 
+    // {
+    //     console.log(event);
+    //     var x = event.offsetX;
+    //     var y = event.offsety;
+    //     test.style.left = x + 'px' ;
+    //     test.style.top = y + 'px' ;
+    // }
+
+    // test.onmouseup = function (event) 
+    // {
+    //    console.log(3);
+    // }
+
+
+    //鼠标按下, 激活拖拽
+    oBox.onmousedown=function(e)
+    {
+
+        var event = event || window.event;
+
+        disX = event.clientX - oBox.offsetLeft;
+        disY = event.clientY - oBox.offsetTop;
+
+        //拖拽开始
+        document.onmousemove = mousemove;
+
+    }
+
+    //鼠标释放, 结束拖拽
+    document.onmouseup = function()
+    {
+        document.onmousemove = null;
+    }
+
+
+    function mousemove(ev)
+    {
+        var event = event || window.event;
+
+        var iL = event.clientX - disX;
+        var iT = event.clientY - disY;
+
+        // oBox.style.left = iL + "px";
+        // oBox.style.top = iT + "px";
+
+        var maxL = document.documentElement.clientWidth - oBox.offsetWidth;
+        var maxT = document.documentElement.clientHeight - oBox.offsetHeight;
+        
+        iL = iL < 0 ? 0 : iL;
+        iL = iL > maxL ? maxL : iL; 
+        
+        iT = iT < 0 ? 0 : iT;
+        iT = iT > maxT ? maxT : iT;
+        
+        oBox.style.left = iL + "px";
+        oBox.style.top = iT + "px";   
+
+    }
+
+</script>
+
+</body>
+</html>

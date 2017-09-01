@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>网络相册</title>
+<link href="16.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="jquery.min.js"></script>
+<script language="javascript">
+var iPicNum = 30;	//图片总数量
+$(function(){
+	for(var i=1;i<=iPicNum;i++)
+		//添加图片的缩略图
+		$(document.body).append($("<div><a href='#'><img src='photo/thumb/"+i.toString()+".jpg'></a></div>"));
+	$("div:has(a)").addClass("thumb");
+	for(var i=0;i<iPicNum;i++){
+		var myimg = new Image();
+		myimg.src = $("div a img").get(i).src;
+		//根据图片的比例（水平或者竖直），添加不同的样式
+		if(myimg.width > myimg.height)
+			$("div:has(a):eq("+i+")").addClass("ls");
+		else
+			$("div:has(a):eq("+i+")").addClass("pt");
+	}
+	
+	$("#showPhoto").hide();	//初始化时不显示大图
+	$("#bgblack").css("opacity",0.9);	//显示大图的方块背景设置为透明
+	
+	$("#close").click(function(){
+		//点击按钮close，则关闭大图面板（采用动画）
+		$("#showPhoto").add("#showPic").fadeOut(400);
+	});
+	
+	$("div a:has(img)").click(function(){
+		//如果点击缩略图，则显示大图
+		$("#showPhoto").css({
+			//大图的位置根据窗口来判断
+			"left":($(window).width()/2-300>20?$(window).width()/2-300:20),
+			"top":($(window).height()/2-270>30?$(window).height()/2-270:30)
+		}).add("#showPic").fadeIn(400);
+		//根据缩略图的地址，获取相应的大图地址
+		var mySrc = $(this).find("img").attr("src");
+		mySrc = "photo" + mySrc.slice(mySrc.lastIndexOf("/"));
+		$("#showPic").find("img").attr("src",mySrc);
+		
+		if($(this).parent().hasClass("ls"))
+			//根据图片属性（水平或者竖直），调整大图的位置
+			$("#showPic").find("img").css("marginTop","70px");
+		else if($(this).parent().hasClass("pt"))
+			$("#showPic").find("img").css("marginTop","0px");
+	});
+
+	var currentSrc;
+	var bMargin;
+	$("#prev").click(function(){
+		//点击“上一幅”按钮
+		currentSrc = $("#showPic").find("img").attr("src");
+		//根据目前的地址，获取上一幅的地址
+		var iNum = parseInt(currentSrc.substring(currentSrc.lastIndexOf("/")+1,currentSrc.lastIndexOf(".jpg")));
+		var iPrev = (iNum == 1)?iPicNum:(iNum-1);
+		var prevSrc = "photo/" + iPrev.toString() + ".jpg";
+		$("#showPic").find("img").attr("src",prevSrc);
+		
+		bMargin = $("div:has(img[src$=/"+iPrev.toString()+".jpg])").hasClass("ls");
+		//根据图片对应的缩略图属性（水平或者竖直），调整大图的位置
+		if(bMargin)
+			$("#showPic").find("img").css("marginTop","70px");
+		else
+			$("#showPic").find("img").css("marginTop","0px");
+	});
+	
+	$("#next").click(function(){
+		//点击“下一幅”按钮
+		currentSrc = $("#showPic").find("img").attr("src");
+		var iNum = parseInt(currentSrc.substring(currentSrc.lastIndexOf("/")+1,currentSrc.lastIndexOf(".jpg")));
+		var iNext = (iNum == iPicNum)?1:iNum+1;
+		var nextSrc = "photo/" + iNext.toString() + ".jpg";
+		$("#showPic").find("img").attr("src",nextSrc);
+		
+		bMargin = $("div:has(img[src$=/"+iNext.toString()+".jpg])").hasClass("ls");
+		if(bMargin)
+			$("#showPic").find("img").css("marginTop","70px");
+		else
+			$("#showPic").find("img").css("marginTop","0px");
+	});
+	
+	$("#showPic").find("img").click(function(){
+		//点击大图，同样显示下一幅
+		$("#next").click();
+	});
+});
+</script>
+</head>
+<body>
+<div id="showPhoto">	<!-- 显示大图 -->
+	<img src="close.jpg" id="close">	<!-- 面板中的关闭按钮 -->
+	<div id="showPic"><img></div>
+	<div id="bgblack"></div>	<!-- 用来显示透明的黑色背景 -->
+	<div id="navigator">
+		<span id="prev"><< 上一幅</span><span id="next">下一幅 >></span>
+	</div>
+</div>
+</body>
+</html>

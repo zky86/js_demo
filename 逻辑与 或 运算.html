@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+    // !!xxx 是为了判断是否存在xxx，若不为 0 null undefined的话 返回true。
+    // ||的执行方式是，如果前面为false则继续判断后面的，如果前面为true停止执行。
+    // 比如
+    // var ss = undefined||465464;
+    // alert(ss);//弹出来的是465464
+    // var ss = 1 || 2;
+    // alert(SS);//弹出来的一定是1
+    // 相似的还有&&运算符。
+    // var aa = true;//这里不一定为aa赋值，还可以是一个函数，然后执行结果返回布尔值就可以
+    // aa&&alert('我执行了');
+    // //上面的代码等价于 if(aa)alert('我执行了')；
+    // http://blog.csdn.net/zzl1120/article/details/6208269 来源
+
+    var a = 1;
+    var b = 7 ;
+    var a = true ;
+    a && ( c = 6 ) ;
+    console.log(c);
+
+
+    // var d ;
+    // var  test = d || 50 ;
+    // console.log(test);
+
+
+
+    // var x;
+    // console.log(typeof(x));
+    // if(!x)
+    // {
+    //     x=123;
+    // }
+    // alert(x)
+
+</script>
+
+</body>
+</html>

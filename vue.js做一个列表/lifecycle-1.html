@@ -1,0 +1,49 @@
+<html>
+<script type="text/javascript" src='./vue.js'></script>
+<body>
+
+<ul id="example-1">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+
+</body>
+<script>
+    var example1 = new Vue({
+        el: '#example-1',
+        created : function(){
+            console.log('created');
+        },
+        beforeCompile : function(){
+            console.log('beforeCompile');
+        },
+        compiled : function(){
+            console.log('compiled');
+        },
+        ready : function(){
+            console.log('ready');
+        },
+        beforeDestroy : function(){
+            console.log('beforeDestroy');
+        },
+        destroyed : function(){
+            console.log('destroyed');
+        },
+        data : function(){
+            return {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ]
+            }
+        },
+        events : {
+
+        },
+        methods : {
+
+        }
+    })
+</script>
+</html>

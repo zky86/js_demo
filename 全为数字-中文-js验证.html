@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.class选择器</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <input type="password" id="pwd">
+    <div id="click">click_me</div>
+    <script type="text/javascript">
+
+        $("#click").on("click", function()
+        {
+            var pwd = $("#pwd").val();
+            var res = isChina(pwd);
+            if (res)
+            {
+                alert("有中文");
+            }
+            else
+            {
+                alert("没中文");
+            }
+            var is_nan_res = isNaN(pwd);
+            if (is_nan_res)
+            {
+                alert("不是全数字");
+            }
+            else
+            {
+                alert("是全数字");
+            }
+        })
+        
+        function isChina(s)
+        {
+            var patrn = /[\u4E00-\u9FA5]|[\uFE30-\uFFA0]/gi;
+            // [\u4E00-\u9FA5]表示汉字，[\uFE30-\uFFA0]表示全角  
+            if (!patrn.exec(s))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+    </script>
+</body>
+</html>

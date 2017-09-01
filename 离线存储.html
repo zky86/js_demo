@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<style type="text/css">
+    .new{height: 1800px;}
+    #test{width: 100px; height: 100px;background-color: #000;color: #fff}
+</style>
+
+
+<script type="text/javascript">
+    // if(window.localStorage){
+    //     alert('This browser supports localStorage');
+    // }else{
+    //     alert('This browser does NOT support localStorage');
+    // }
+
+// localStorage.o = 3;//设置a为"3"
+// localStorage["a"] = "sfsf";//设置a为"sfsf"，覆盖上面的值
+// localStorage.setItem("b","isaac");//设置b为"isaac"
+// var a1 = localStorage["a"];//获取a的值
+// var a2 = localStorage.a;//获取a的值
+// var b = localStorage.getItem("b");//获取b的值
+// alert(localStorage.o )
+// localStorage.removeItem("c");//清除c的值
+
+var details = {author:"isaac","description":"fresheggs","rating":100};
+localStorage.setItem("details",JSON.stringify(details));
+details = JSON.parse(localStorage.getItem("details"));
+
+alert(details.author)
+
+</script>
+</body>
+</html>   

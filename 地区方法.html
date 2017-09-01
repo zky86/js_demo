@@ -1,0 +1,348 @@
+<script>
+// ============== 配置wap版本的地区 v3 ==============
+/**
+ * <h4>地区选择组件v2</h4>
+ * @param  {[type]} options [description]
+ * @return {[type]}         [description]
+ */ 
+var loc_class_v2 = function(options)
+{
+    var self = this;
+    self.init(options);
+};
+loc_class_v2.prototype = 
+{
+    /**
+     * 初始化
+     * @param  {[type]} options [description]
+     * @return {[type]}         [description]
+     */
+    init : function(options)
+    {
+        var self = this;
+
+        options = options || {};
+
+        self.$el = options.$el || $({});
+        self.province_id = options.province_id || 0;
+        self.city_id = options.city_id || 0;
+        self.district_id = options.district_id || 0;
+        self.lv = options.lv || 2;
+        self.verson = options.verson || '';
+        self.change_province_callback = options.change_province_callback || function(){};
+        self.change_city_callback = options.change_city_callback || function(){};
+        self.change_district_callback = options.change_district_callback || function(){};
+        self.ready = options.ready || function(){};
+        self.success_render = options.success_render || function(){}
+        self.refresh();
+
+        return self;
+    },
+    refresh : function()
+    {
+        var self = this;
+
+        var verson = utility.storage.get('total_location_data_verson') || '' ;
+
+        //  判断是否有缓存本地，如果有，读取本地，没有读取线上
+        if(verson) 
+        {
+            // 匹配缓存版本号与传入版本号，哪个是最新版
+            if (  self.verson !== verson ) 
+            {
+                self.action();
+
+            }
+            else
+            {
+                self.data = utility.storage.get('total_location_data') ;
+                self.render(self.province_id,self.city_id,self.district_id);
+
+                if(typeof self.ready == 'function')
+                {
+                    self.ready.call(this, self.$el);
+                }
+            }
+        }
+        else
+        {
+            self.action();
+        }
+
+        
+    },
+    action : function()
+    {
+        var self = this;
+
+        var timeout = 10000;
+
+        var req_success = false;
+
+        var url = 'http://yp.yueus.com/action/get_location_data_v2.php?callback=?';
+
+        if(self.verson == '1.0.0')
+        {
+            url = 'http://yp.yueus.com/action/get_location_data.php?callback=?';
+        }
+
+        utility.ajax_request
+        ({
+            url: url,
+            dataType: 'JSONP',
+            timeout : timeout,
+            cache: true,
+            beforeSend: function() 
+            {   
+                //self.$el.html('地区加载中...');
+            },
+            success: function(ret) 
+            {
+                req_success = true;
+                
+                console.log(ret.data);
+
+                self.data = ret.data;
+                self.verson = ret.verson;
+
+                // 设置缓存
+                utility.storage.set('total_location_data',ret.data)
+
+                // 成功后设置版本号
+                utility.storage.set('total_location_data_verson', self.verson)
+
+                self.render(self.province_id,self.city_id,self.district_id);
+
+                if(typeof self.ready == 'function')
+                {
+                    self.ready.call(this, self.$el);
+                }
+
+            }
+        });
+
+        window.setTimeout(function()
+        {
+            if(!req_success)
+            {
+                self.$el.html('<a href="javascript:;" style="color:red;" data-role="location-error-btn">网络异常，请点击刷新</a>');
+
+                self.$el.find('[data-role="location-error-btn"]').off().on('click',function()
+                {
+                    window.location.href = window.location.href;
+                })
+            }
+        },timeout);
+    },
+    render : function(province_id,city_id,district_id)
+    {
+        var self = this;
+
+        var data = self.data;
+
+        var province_data = JSON.parse(data.province);
+        var city_data = JSON.parse(data.city);
+        var district_data = JSON.parse(data.district)
+
+        var temp_p_arr = ['<option value="">省</option>'];
+        var temp_c_arr = ['<option value="">市</option>'];
+        var temp_d_arr = ['<option value="">区</option>'];        
+    
+        // 整合省数据
+        for (var i = 0; i < province_data.length; i++) {
+            var obj = province_data[i];
+            var selected = '';
+            if(obj.location_id == province_id)
+            {
+                selected = 'selected';
+            }
+
+            temp_p_arr.push('<option '+selected+' value="'+obj.location_id+'">'+obj.location_name+'</option>');
+            
+        };
+
+        // 整合市数据
+        for (var i = 0; i < city_data.length; i++) {
+            var obj = city_data[i];
+            var selected = '';
+            if(obj.parent_id == province_id)
+            {
+                if(!city_id)
+                {
+                    city_id = obj.location_id;
+                }
+
+                if(obj.location_id == city_id)
+                {
+                    selected = 'selected';
+                }
+                temp_c_arr.push('<option '+selected+' value="'+obj.location_id+'">'+obj.location_name+'</option>');
+            }
+        };        
+
+        // 整合区数据        
+        for(var i=0;i<district_data.length;i++)
+        {
+            var obj = district_data[i];
+            var selected = '';
+            
+            if(obj.parent_id == city_id)
+            {
+                if(!district_id)
+                {
+                    district_id = obj.location_id;
+                }
+
+                if(obj.location_id == district_id)
+                {
+                    selected = 'selected';
+                }
+               
+                temp_d_arr.push('<option '+selected+' value="'+obj.location_id+'">'+obj.location_name+'</option>');
+            }
+        }
+
+        self.$el.find('[data-role="s-province"]').html(temp_p_arr.join(''));
+        self.$el.find('[data-role="s-city"]').html(temp_c_arr.join('')).hide().show();
+        self.$el.find('[data-role="s-district"]').html(temp_d_arr.join('')).hide().show();
+
+        if(temp_d_arr.length>1)
+        {
+            self.$el.find('[data-role="s-district"]').show();
+        }
+        else
+        {
+            self.$el.find('[data-role="s-district"]').hide();
+        }
+                
+        self.province_id = province_id;
+        self.city_id = city_id;
+
+        if(self.$el.find('[data-role="s-district"]').length)
+        {
+            self.district_id = district_id;
+        }        
+
+        if(!self.has_setup_event)
+        {
+            self.setup_event();
+        }        
+
+        self.success_render.call(this,self.$el);
+    },
+    setup_event : function()
+    {
+        var self = this;
+        var $locationid = self.$el.find('[data-role="location-id"]');
+
+
+
+        if(self.district_id>0)
+        {
+            $locationid.val(self.district_id);
+        }
+        else if(self.city_id>0)
+        {
+            $locationid.val(self.city_id);
+        }
+        else 
+        {
+            $locationid.val(self.province_id);
+        }
+
+        self.has_setup_event = false; 
+
+        // 选择省
+        self.$el.find('[data-role="s-province"]').off().on('change',function()
+        {
+            var province_id = $(this).val();
+            self.province_id = province_id;  
+
+            self.render(self.province_id);                     
+
+            // 默认选中第一个城市                        
+
+            //self.city_id = self.$el.find('[data-role="s-city"]').find('option').eq(1).val();
+            //self.district_id = self.$el.find('[data-role="s-district"]').find('option').eq(1).val();
+            self.$el.find('[data-role="s-city"]').val(self.city_id);
+            self.$el.find('[data-role="s-district"]').val(self.district_id);
+            
+            $locationid.val(self.district_id || self.city_id);
+
+            if(typeof self.change_province_callback == 'function')
+            {
+                self.change_province_callback.call(this, $(this).val());
+            }
+
+            self.$el.trigger('change_province_callback',$(this).val());
+
+        });
+
+        // 选择市
+        self.$el.find('[data-role="s-city"]').off().on('change',function()
+        {
+            var city_id = $(this).val();
+
+            var index= $(this).get(0).selectedIndex;                
+
+            self.city_id = city_id;
+            
+            self.render(self.province_id,self.city_id);                
+
+            //self.district_id = self.$el.find('[data-role="s-district"]').find('option').eq(1).val();
+            self.$el.find('[data-role="s-district"]').val(self.district_id);
+
+            $locationid.val(self.district_id || self.city_id);
+
+            if(typeof self.change_city_callback == 'function')
+            {
+                self.change_city_callback.call(this, $(this).val());
+            }
+
+            self.$el.trigger('change_city_callback',$(this).val());
+        });
+
+        // 选择区
+        self.$el.find('[data-role="s-district"]').length && self.$el.find('[data-role="s-district"]').off().on('change',function()
+        {
+            var district_id = $(this).val();
+
+            var index= $(this).get(0).selectedIndex;
+
+            self.district_id = district_id;
+
+            $locationid.val(self.district_id || '');
+
+            if(typeof self.change_district_callback == 'function')
+            {
+                self.change_district_callback.call(this, $(this).val());
+            }
+
+            self.$el.trigger('change_district_callback',$(this).val());
+        });
+    }
+};
+var loc_v2 = new loc_class_v2
+({
+    $el : $('.wap-area-select'),
+    province_id : '{province_id}',
+    city_id :'{service_location_id}',
+    verson : '1.0.3'
+});
+</script>
+
+<!--必须引用模板-->
+<div data-role=“xxxxx” >
+    <select data-role="s-province" name="{options.province_name}">
+                
+    </select>
+    <select data-role="s-city" name="{options.city_name}">
+                
+    </select>
+    <!-- IF show_district -->
+    <select data-role="s-district" name="{options.district_name}">
+                
+    </select>
+    <!-- ENDIF -->
+    <input type="hidden" data-role="location-id"  value="{location_id}">
+</div>

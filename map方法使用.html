@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<!-- <script src="js/.js"  type="text/javascript" ></script> -->
+</head>
+<body>
+<script type="text/javascript">
+
+function HashMap(){
+    this.map = {};
+}
+HashMap.prototype = {
+    put : function(key , value){
+        this.map[key] = value;
+    },
+    get : function(key){
+        if(this.map.hasOwnProperty(key)){
+            return this.map[key];
+        }
+        return null;
+    },
+    remove : function(key){
+        if(this.map.hasOwnProperty(key)){
+            return delete this.map[key];
+        }
+        return false;
+    },
+    returnObj : function()
+    {
+        return this.map;
+    },
+    removeAll : function(){
+        this.map = {};
+    },
+    keySet : function(){
+        console.log(this.map);
+        var _keys = [];
+        var obj = {};
+        for(var i in this.map){
+            obj[i] = this.map[i];
+            _keys.push(obj);
+        }
+        return _keys;
+    }
+};
+
+var hashMap = new HashMap();
+hashMap.put('a' ,'1');
+hashMap.put('b' ,'2');
+
+// console.log(hashMap.returnObj());
+// console.log(hashMap.get('key'));
+console.log(hashMap.keySet());
+// console.log(hashMap.remove('key'));
+// console.log(hashMap.keySet());
+
+</script>
+</body>
+</html>

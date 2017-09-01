@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="jquery.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+
+<style>
+*{
+    padding: 0px;
+    margin: 0px; 
+}   
+body{
+    padding: 20px
+}
+</style>
+
+
+<input type="text" name=" " id=" " class="input-text" />
+<br /><br />
+<div id="btn">提交</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+    $('#btn').on('click', function(event) {
+        var val = $('.input-text').val();
+
+        check(val);
+        // if (!check(val)) 
+        // {
+        //     return  ;
+        // }
+        console.log(2);
+
+
+    });
+
+    function check(val) 
+    {
+        console.log(val);
+        if (!val) 
+        {
+            alert('请输入值');
+            return false;
+        }
+        return true;
+    }
+
+});
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+</head>
+    <script type="text/javascript" src="jquery.js"></script>
+<body>
+
+    <form>
+        <div>
+            <input type="text" name="a" value="1" id="a"/>
+        </div>
+        <div>
+            <input type="text" name="b" value="2" id="b"/>
+        </div>
+        <div>
+            <input type="hidden" name="c" value="3" id="c"/>
+        </div>
+        <div>
+            <textarea name="d" rows="8" cols="40">4</textarea>
+        </div>
+        <div>
+             <select name="e"> 
+                <option value="5" selected="selected">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" name="f" value="8" id="f"/>
+        </div>
+        <div>
+            <input type="submit" name="g" value="Submit" id="g"/>
+        </div>
+    </form>
+
+
+<script type="text/javascript">
+var str_1 = '123,abc,xy,hi' ;
+console.log(str_1.split(','));
+
+
+
+
+$('form').submit(function()
+{ 
+    console.log($(this).serialize());
+    var str = $(this).serialize().toString();
+    var arr = str.split('&');
+    console.log(arr);
+
+    return false; 
+}); 
+
+
+
+</script>
+</body>
+</html>

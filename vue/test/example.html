@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="gbk"/>
+    <script type="text/javascript" charset="gbk" src="http://static.yueus.com/yue_ui/vue/1.0.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+
+<ul id="example-1">
+    <li v-for="(index, item) in items" v-on:click="doThis('hello', $event)">
+        {{item.place}}-{{$index}}
+    </li>
+</ul>
+
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#example-1',
+        ready : function()
+        {
+            //this.$emit('fetch')
+
+        },
+        data : function(){
+            return {
+                items : 
+                [
+                    { place: '广州' },
+                    { place: '北京' }
+                ]
+            }
+        },
+        computed : {
+
+
+        },
+        events :{
+            test : function(a){
+                console.log(a);
+            }
+        },
+        methods : {
+            doThis : function(a,b){
+                this.$emit('test',1111);
+            }
+        },
+        components: {
+
+        }
+    })
+</script>
+
+
+</html>

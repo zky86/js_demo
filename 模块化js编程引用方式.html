@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<!-- <script src="js/.js"  type="text/javascript" ></script> -->
+</head>
+<body>
+
+
+<script type="text/javascript">
+    var test = require('../modules/test');
+
+    // 执行 init1 方法，把参数传入组件
+    test.init1({test : 1}) ;
+    test.init2();
+
+    // test.init();
+
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var $ = require('jquery');
+
+// 暴露多个方法 init1  init2
+module.exports = 
+{
+
+    init1 : function (options) 
+    {
+        console.log(options.test);
+    },
+
+    init2 :  function(){
+        console.log(2);
+    }
+
+}
+
+
+// 暴露1个方法 init
+// exports.init = function () 
+// {
+//     console.log(1);
+// }
+
+    
+</script>
+</body>
+</html>

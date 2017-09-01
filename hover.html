@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+    <link href="css/zt.css"  type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+
+
+<style type="text/css">
+    *{padding: 0;margin: 0}
+    .list{}
+    .list li{float:left; width: 200px; height: 200px;background-color: #000;margin-left: 30px; list-style: none; position: relative; overflow: hidden}
+    .fade{position: absolute;width: 200px;height: 40px;background-color: #fff;color:red; bottom: -40px}
+</style>
+
+<ul class="list clearfix">
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+    <li>
+        测试
+        <div class="fade">
+            浮动的
+        </div>
+    </li>
+</ul>        
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.list li').hover(function() {
+            $(this).find('.fade').stop().animate({bottom:"0px"},"fast");
+        }, function() {
+            $(this).find('.fade').stop().animate({bottom:"-40px"},{ duration: "fast"},{ easing: "easein"});
+        });
+    });
+</script>
+</body>
+</html>

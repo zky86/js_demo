@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+    <link href="../css/zt.css"  type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../jquery.js"></script>
+</head>
+
+<body>
+
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
+     <head>
+      <title>js/jQuery实现类似百度搜索功能</title>
+      <meta name="Author" content="Michael">
+      <meta name="Keywords" content="js/jQuery实现类似百度搜索功能">
+      <meta name="Description" content="js/jQuery实现类似百度搜索功能,可用键盘控制">
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <style type="text/css">
+        #container{
+            position:absolute;
+            left:50%;
+            top: 40%;
+        }
+        #content{
+            float:left;
+            position:relative;
+            right:50%;
+        }
+        input{
+            border:0;
+            width:288px;
+            height:30px;
+            font-size:16px;
+            padding:0 5px;
+            line-height:30px;
+        }
+        .item{
+            padding:3px 5px;
+            cursor:pointer;
+        }
+        .addbg{
+            background:#87A900;
+        }
+        .first{
+            border:solid #87A900 2px;
+            width:300px;
+        }
+        #append{
+            border:solid #87A900 2px;
+            border-top:0;
+            display:none;
+        }
+      </style>
+     </head>
+     <body>
+        <div id="container">
+        <div id="content">
+            <div class="first"><input id="kw" onKeyup="getContent(this);" /></div>
+            <div id="append"></div>
+        </div>
+        </div>
+     </body>
+    </html>
+
+
+
+    <script type="text/javascript">
+    var data = [
+        "你好，我是Michael",
+        "你是谁",
+        "你最好啦",
+        "你最珍贵",
+        "你是我最好的朋友",
+        "你画我猜",
+        "你是笨蛋",
+        "你懂得",
+        "你为我着迷",
+        "你是我的眼"
+    ];
+    $(document).ready(function(){
+        $(document).keydown(function(e){
+            e = e || window.event;
+            var keycode = e.which ? e.which : e.keyCode;
+            if(keycode == 38){
+                if(jQuery.trim($("#append").html())==""){
+                    return;
+                }
+                movePrev();
+            }else if(keycode == 40){
+                if(jQuery.trim($("#append").html())==""){
+                    return;
+                }
+                $("#kw").blur();
+                if($(".item").hasClass("addbg")){
+                    moveNext();
+                }else{
+                    $(".item").removeClass('addbg').eq(0).addClass('addbg');
+                }
+               
+            }else if(keycode == 13){
+                dojob();
+            }
+        });
+
+        var movePrev = function(){
+            $("#kw").blur();
+            var index = $(".addbg").prevAll().length;
+            if(index == 0){
+                $(".item").removeClass('addbg').eq($(".item").length-1).addClass('addbg');
+            }else{
+                $(".item").removeClass('addbg').eq(index-1).addClass('addbg');
+            }
+        }
+       
+        var moveNext = function(){
+            var index = $(".addbg").prevAll().length;
+            if(index == $(".item").length-1){
+                $(".item").removeClass('addbg').eq(0).addClass('addbg');
+            }else{
+                $(".item").removeClass('addbg').eq(index+1).addClass('addbg');
+            }
+           
+        }
+       
+        var dojob = function(){
+            $("#kw").blur();
+            var value = $(".addbg").text();
+            $("#kw").val(value);
+            $("#append").hide().html("");
+        }
+    });
+    function getContent(obj){
+        var kw = jQuery.trim($(obj).val());
+        if(kw == ""){
+            $("#append").hide().html("");
+            return false;
+        }
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].indexOf(kw) >= 0) {
+                html = html + "<div class='item' onmouseenter='getFocus(this)' onClick='getCon(this);'>" + data[i] + "</div>"
+            }
+        }
+        if(html != ""){
+            $("#append").show().html(html);
+        }else{
+            $("#append").hide().html("");
+        }
+    }
+    function getFocus(obj){
+        $(".item").removeClass("addbg");
+        $(obj).addClass("addbg");
+    }
+    function getCon(obj){
+        var value = $(obj).text();
+        $("#kw").val(value);
+        $("#append").hide().html("");
+    }
+    </script>
+
+
+</body>
+</html>

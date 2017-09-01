@@ -1,0 +1,31 @@
+<html>
+<script type="text/javascript" src='./vue.js'></script>
+<body>
+
+    <!-- 这是我们的 View -->
+    <div id="page-main">
+        <div v-for='(index, item) in list'>
+            <div class="custom_per">{{index}}.{{item.title}}</div>
+        </div>
+        <div @click.stop="add($event)">增加</div>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#page-main',
+        data : function(){
+            return {
+                list : [{title:'111'},{title:'222'}]
+            }
+        },
+        methods : {
+            add : function(){
+                this.list.push({title:'3456'})
+            }
+        }
+    })
+
+    //vm.list
+</script>
+</html>

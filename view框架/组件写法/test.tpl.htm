@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>测试view</title>
+</head>
+<body >
+    <link rel="import" href="../ui/g_head.tpl.htm?__inline">
+    <link charset="utf-8" rel="stylesheet" href="../../style/order/index.scss">
+    <main role="main">
+        <div id="page-container" class="page-container" >
+
+
+
+            <div class="main-content" data-role="main-content">
+                <model_1 ref="test1" @success="list_com1_success"></model_1>
+                {{ajax_params.page}}
+            </div>
+            <br />
+            <div class="" @click="operation_tyle()" >父组件点击切换数据</div>
+
+
+            <br />
+            分割线
+            <div v-html="code_btn_html"></div>
+
+
+
+        </div>
+
+        
+    </main>
+</body>
+</html>
+<link rel="import" href="../ui/g_footer.tpl.htm?__inline">
+
+<!--SCRIPT_PLACEHOLDER-->
+<!--
+@message
+注意：
+引用模块必须在global_footer之后
+使用本地缓存的组件，使用方法 如： require.syncLoad('namespace:xxxxxx')
+-->
+<script type="text/javascript">
+    (function()
+    {
+        // 加载util
+        // var Util =require.syncLoad(__moduleId('/modules/global/util/index'));
+
+        // 加载模块
+        var List = require('/modules/layout/test/index');
+        new Vue
+        ({
+            el: '#page-container',
+            created: function()
+            {
+                // console.log(1);
+            },
+            data:function()
+            {
+                // console.log(2);
+                return {
+                      ajax_params :{
+                          page : 5000
+                      },
+                     code_btn_html : '获取验证码'
+                }
+            },
+            mounted : function()
+            {
+                // console.log(3);
+                // 主动去刷新当前列表
+                
+                var self = this;
+                console.log(self);
+                self.$data.code_btn_html = "55555";
+            },
+            components :
+            {
+                'model_1' : List.init
+                ({
+                    url :'order/get_list.php',
+                    template : __inline('./test_item.htm'),
+                    data : function()
+                    {
+                        // console.log(4);
+                        var obj =
+                        {
+                            ajax_params :
+                            {
+                                page : 1
+                            },
+                            data :
+                            {
+                                num : 1,
+                                code : 2
+                            }
+                        };
+                        return obj
+                    },
+                    methods :
+                    {
+                        // 子组件点击按钮表单类型操作
+                        operation_tyle : function()
+                        {
+                            var self = this;
+                            self.$data.ajax_params.page = 9;
+                            
+                        }
+                    },
+                }),
+            },
+            methods:
+            {
+                // 子组件点击按钮表单类型操作
+                operation_tyle : function()
+                {
+                    var self = this;
+                    // console.log(self.$refs.test1);
+                    self.$refs.test1.father_test();
+                    self.$data.ajax_params.page = 200000;
+                    // self.$refs.list1.refresh();
+                    
+                },
+                // 监听列表组件1的回调
+                // 注意，一定是父组件监听子组件的event
+                list_com1_success : function(res)
+                {
+                    var self = this;      
+                    console.log('触发回调');
+                    // console.log(res);
+                }
+            }
+        });
+    })();
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="../jquery.js"  type="text/javascript" ></script>
+<script src="./hammer.min.js"  type="text/javascript" ></script>
+</head>
+<body style="padding:200px">
+
+<div id="test" class="test">测试</div>
+
+<style type="text/css" media="screen">
+    *{
+        padding:0;
+        margin: 0
+    }
+</style>
+
+
+<script type="text/javascript">
+
+
+
+$(document).ready(function() {
+console.log(123);
+   //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+  var hammertime = new Hammer(document.body);
+  //为该dom元素指定触屏移动事件
+  hammertime.on("panright", function (ev) {
+      //控制台输出
+      console.log('右拨动');
+  });
+
+  hammertime.on("panleft", function (ev) {
+      //控制台输出
+      console.log('左拨动');
+  });
+
+})
+</script>
+
+
+
+</body>
+</html>

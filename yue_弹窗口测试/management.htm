@@ -1,0 +1,944 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>约约 编辑模特卡</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="css/zt.css" type="text/css" rel="stylesheet" />
+<script src="./js/jquery-1.11.2.min.js"></script>
+
+</head>
+<style>
+    .fn-hide
+    {
+        visibility: hidden;
+        display: none;
+    }
+    .pdt-20
+    {
+        padding-top: 20px;
+    }
+    .show_icon
+    {
+        width: 100px;
+        height: 100px;
+    }
+    .pics
+    {
+        float: left;
+        width: 170px;
+        height: 160px;
+        margin-right: 10px;
+        margin-top: 15px;
+        position: relative;
+    }
+    .pop_sec_style
+    {
+        height: auto;
+        padding-bottom: 20px;
+    }
+    .pics img
+    {
+        width: 160px;
+        height: 160px;
+        border-radius: 10px;
+        border: 1px solid #dee1e0;
+    }
+    .bdne
+    {
+        border: none;
+    }
+    .fn-hide
+    {
+        display: none;
+        visibility: hidden;
+    }
+    .pics:nth-child(3)
+    {
+        margin-right: 0px;
+    }
+    .closes
+    {
+        position: absolute;
+        right: 0px;
+        top: -8px;
+		z-index:99;
+    }
+    .closes a
+    {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url(images/close.png);
+    }
+    .closes a:hover
+    {
+        background-image: url(images/close-hover.png);
+    }
+
+    .pic_progress{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        line-height: 160px;
+		z-index:98;
+    }
+	.user-icon-progress{
+		height: 100px;
+		width: 100px;
+		text-align: center;
+		line-height: 100px;
+	}
+</style>
+<body>
+    <div class="top-bar">
+        <div class="w1000">
+            <div class="wbox clearfix">
+                <div class="lbox fldi"><img src="images/ty-img-1.jpg" /></div>
+                <div class="rbox frdi font_wryh" id="user_state">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="contenter-wrap">
+    <div class="w1000">
+        <div class="contenter clearfix">
+            <div class="sidebar fldi">
+                <div class="box1">
+                    <iframe  style="background:#fff"  id="preview_iframe" src="http://yp.yueus.com/wap/model_card/model_card.php?user_id={user_id}" allowtransparency="true" style="background-color=transparent" title="" frameborder="0" width="320" height="480" scrolling="no"></iframe>
+                </div>
+                <div class="box2 font_wryh" preview="1">预览模特卡</div>
+            </div>
+            <div class="main fldi">
+                <div class="part1 font_wryh f14">
+                    <div class="box1">
+                        <span class="s1 ">作品</span> 要求上传本人作品，<span class="s2"><span class="cor" pics_num>0</span>/9</span>
+                    </div>
+                    <div class="box2 clearfix" pics_contain>
+                        <div class="pics bdne" upload_pics_btn><img id="show_pic_btn" class="show_pic_btn bdne" src="http://yp.yueus.com/model/images/null_pic.png"/></div>
+                    </div>
+                </div>
+
+                <div class="part2">
+                    <div class="title font_wryh">个人资料</div>
+
+                    <div class="item-wrap font_wryh f14">
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi"><div class="user-txt">头像：</div></div>
+                                <div class="rbox fldi">
+                                    <div class="user-wbox clearfix">
+                                  
+                                        <div class="user-rbox fldi pdt-20">
+                                            <div id="edit_btn" class="" edit_btn></div>
+                                            <div class="txt">支持JPG、PNG、GIF格式；不要超过4M</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">昵称：</div>
+                                <div class="rbox fldi">
+                                    <input type="text" name=" " id="data_nickname" class="input-text" value="{data.user_name}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">
+                                    地区：
+                                </div>
+                                <div class="rbox fldi">
+                                    <div class="prace">
+                                        <select id="province" name="reslocateID" class="province font_wryh">
+                                            <option value="">-请选择省份-</option>
+                                        </select>
+                                        <span class="pr15">省</span>
+                                        <select id="city" name="locate_id" class="town font_wryh">
+                                            <option selected="selected" value="">-请选择城市-</option>
+                                        </select>市
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">
+                                    性别：
+                                    
+                                </div>
+                                <div class="rbox fldi">
+                                    <div class="sex">
+
+                                        <label><input type="radio" name="sexy" id=" " class="input-radio" value="男"/><span class="pr15"> 男</span></label>
+
+                                        <label><input type="radio" name="sexy" id=" " class="input-radio" value="女" checked/> 女</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">身高：</div>
+                                <div class="rbox fldi">
+                                    <input type="text" name=" " id="data_height" class="input-text" value="{data.height}"/> CM
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">体重：</div>
+                                <div class="rbox fldi">
+                                    <input type="text" name=" " id="data_weight" class="input-text" value="{data.weight}"/> KG
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">三围：</div>
+                                <div class="rbox fldi">
+
+                                    <div class="sw">
+                                    <input type="text" name=" " id="data_chest" class="input-text" placeholder="胸围" value="{data.chest}"/>
+                                    <input type="text" name=" " id="data_waist" class="input-text"  placeholder="腰围" value="{data.waist}"/>
+                                    <input type="text" name=" " id="data_hip" class="input-text"  placeholder="臀围" value="{data.hip}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">
+                                    CUP：
+                                    
+                                </div>
+                                <div class="rbox fldi">
+                                    <div class="prace">
+                                    <select name="" id="cups_le">
+                                        <option value="30">30</option>
+                                        <option value="32">32</option>
+                                        <option value="34">34</option>
+                                        <option value="36">36</option>
+                                        <option value="38">38</option>
+                                    </select> <span class="pr15"></span>
+                                    <select name="" id="cups">
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E+">E+</option>
+                                    </select> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="part3  font_wryh">
+                    <div class="title">信用等级及拍摄人数要求</div>
+
+                    <div class="box1"><span class="cor1">信用等级要求</span> <span class="cor2">(摄影师约拍你的认证要求)</span></div>
+
+                    <ul class="list clearfix" id="credit-level" >
+                        <li level_require="1"<!-- IF data.level_require == "1" -->class="cur"<!-- ENDIF data.level_require -->>V1手机认证</li>
+                        <li level_require="2"<!-- IF data.level_require == "2" -->class="cur"<!-- ENDIF data.level_require -->>V2实名认证</li>
+                        <li level_require="3"<!-- IF data.level_require == "3" -->class="cur end"<!-- ELSE -->class="end"<!-- ENDIF data.level_require -->class="">V3达人认证</li>
+                    </ul>   
+
+                    <div class="txtbox">
+                        <div class="allow" id="allow"></div>
+                        <span class="txt" id="credit-txt">V1：对方已获得手机认证</span>
+                    </div>   
+
+                    <div class="num-title">每次拍摄人数不得超过：</div>
+
+                    <div class="wbox clearfix">
+                        <div class="lbox fldi" id="btn_reduce"><span class="icon-reduce"></span></div>
+                        <div class="cbox fldi"><input type="text" name=" "  value="{data.limit_num}" disabled="disabled" id="person_num" class="input-text input-text-not"/></div>
+                        <div class="rbox fldi" id="btn_add"><span class="icon-add"></span></div>
+                    </div>
+
+
+                </div>
+
+                <div class="part4  font_wryh">
+                    <div class="title">拍摄风格及价格</div>
+                    <div class="col-wrap clearfix" id="col-wrap">
+                        <!-- IF data.model_style_combo.main -->
+                        <!-- BEGIN data.model_style_combo.main -->
+                        <div class="col" col_main>
+                            <div class="close fn-hide"><a href="#this"></a></div>
+                            <div class="box1"><span class="cor1">主价格及风格</span>
+                                <span class="cor2"> (主价格及风格会优先展示在模特卡)</span></div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">价格：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14">
+                                        <input type="text" name=" " id="data_main_price" class="input-text mr10" value="{price}"/>
+                                        <!-- IF hour == "4" -->
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio" value="4" checked/>元/4小时</label>
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio ml10" value="2"/>元/2小时</label>
+                                        <!-- ELSE -->
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio" value="4"/>元/4小时</label>
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio ml10" value="2" checked/>元/2小时</label>
+                                        <!-- ENDIF hour -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">续拍：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14">
+                                        <input type="text" name=" " id="data_main_price_goon" class="input-text mr10" value="{continue_price}"/>元/小时
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">风格：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14 money-ib">
+                                        <input type="text" name=" " id="data_main_style" data-style-con="a-1" data_style_inputs class="input-text mr10 input-text-style" value="{style}" readonly/>
+                                    </div>
+                                    <div class="btn2 btn_sec_style" data-style-btn="a-1">选择/修改风格</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END data.model_style_combo.main -->
+                        <!-- ELSE -->
+                        <div class="col" col_main>
+                            <div class="close fn-hide"><a href="#this"></a></div>
+                            <div class="box1"><span class="cor1">主价格及风格</span>
+                                <span class="cor2"> (主价格及风格会优先展示在模特卡)</span></div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">价格：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14">
+                                        <input type="text" name=" " id="data_main_price" class="input-text mr10" />
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio" value="4" checked/>元/4小时</label>
+                                        <label><input type="radio" name="radio_money_mian" id=" " class="input-radio ml10" value="2" />元/2小时</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">续拍：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14">
+                                        <input type="text" name=" " id="data_main_price_goon" class="input-text mr10" value=""/>元/小时
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wbox clearfix">
+                                <div class="lbox fldi">风格：</div>
+                                <div class="rbox fldi">
+                                    <div class="money f14 money-ib">
+                                        <input type="text" name=" " id="data_main_style" data-style-con="a-1" data_style_inputs class="input-text mr10 input-text-style" value="{style}" readonly/>
+                                    </div>
+                                    <div class="btn2 btn_sec_style" data-style-btn="a-1">选择/修改风格</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ENDIF data.model_style_combo.main-->
+
+                        <!-- IF data.model_style_combo.other -->
+                        <!-- BEGIN data.model_style_combo.other -->
+                        <div class="col" col_other>
+                            <div class="close"><a href="#this"></a></div>
+                            <div class="box1"><span class="cor1">其他价格及风格_{idx}：</span>
+                                </div>
+                                <div class="wbox clearfix">
+                                    <div class="lbox fldi">价格：</div>
+                                    <div class="rbox fldi">
+                                        <div class="money f14">
+                                        <input type="text" name="other_style_price" id=" " class="input-text mr10" value="{price}"/>
+                                            <!-- IF hour == "4" -->
+                                            <label><input type="radio" name="radio_money_{idx}" id=" " class="input-radio" value="4" checked/>元/4小时</label>
+                                            <label><input type="radio" name="radio_money_{idx}" id=" "  class="input-radio ml10" value="2"/>元/2小时</label>
+                                            <!-- ELSE -->
+                                            <label><input type="radio" name="radio_money_{idx}" id=" " class="input-radio" value="4"/>元/4小时</label>
+                                            <label><input type="radio" name="radio_money_{idx}" id=" "  class="input-radio ml10" value="2" checked/>元/2小时</label>
+                                            <!-- ENDIF hour -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wbox clearfix">
+                                    <div class="lbox fldi">续拍：</div>
+                                    <div class="rbox fldi">
+                                        <div class="money f14">
+                                        <input type="text" name="other_style_price_goon" id=" " class="input-text mr10" value="{continue_price}"/>元/小时
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wbox clearfix">
+                                    <div class="lbox fldi">风格：</div>
+                                    <div class="rbox fldi">
+                                        <div class="money f14 money-ib">
+                                        <input type="text" name="other_style_style" id="" data_style_inputs class="input-text mr10 input-text-style" value="{style}" readonly/>
+                                        </div>
+                                        <div class="btn2 btn_sec_style">选择/修改风格</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- END data.model_style_combo.other -->
+                        <!-- ENDIF data.model_style_combo.other-->
+                        <div class="btn-end" id="btn-end">
+                            <span class="icon"></span> 添加更多价格
+                        </div>
+                    </div>
+                </div>
+                <div class="part5  font_wryh">
+
+                    <div id="submit_btn" class="btn">保存当前修改</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="w1000">
+        <a href="#">关于约约</a> <span class="pr5 pl5">|</span> Copyright 2003-2015 YUEUS.COM 
+    </div>
+</div>
+
+
+
+<div class="fade" style="display:none"></div>
+
+<div class="pop_sec_style font_wryh" style="display:none">
+    <div class="close"></div>
+
+    <div class="box1"><span class="cor1">请选择风格</span> <span class="cor2">(最多只能选择三个风格)</span></div>
+    <ul class="list clearfix" id="btn_style_check">
+
+    </ul>  
+
+    <div class="box3">
+        <div class="btn" id="btn_confirm">确定</div>   
+    </div>   
+</div>
+<input id="get_data_location_id" type="hidden" value="{data.location_id}"/>
+<input id="get_data_chest_inch" type="hidden" value="{data.chest_inch}"/>
+
+<input id="get_data_cup" type="hidden" value="{data.cup_v2}"/>
+<input id="limit_num" type="hidden" value="{data.limit_num}"/>
+
+
+<!-- 地区插件  -->
+<!--script src="js/selectlocal.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">new SelectLocal('#province', '#city');</script-->
+
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
+
+
+        $(document).ready(function() {
+            //地区数据
+            var province = [];
+            var city = [];
+            var model_style_data = ['欧美','情绪','清新','复古','韩系','日系','性感','街拍','胶片','商业'];
+            var model_pic = []  ;
+            var location_str = document.getElementById("get_data_location_id").value;
+            var default_chest_inch = $('#get_data_chest_inch').val();
+            var default_cups = $('#get_data_cup').val();
+            var get_data_province_id = location_str.substring(0,6);
+            var style_limit = new Array();
+			var _upload_img_group ={};
+
+            var model_pic_num = model_pic.length;
+
+    
+
+            var cup_submit;
+            if(default_cups.indexOf("A") != -1){cup_submit = 'A';}
+            else if(default_cups.indexOf("B") != -1){cup_submit = 'B';}
+            else if(default_cups.indexOf("C") != -1){cup_submit = 'C';}
+            else if(default_cups.indexOf("D") != -1){cup_submit = 'D';}
+            else if(default_cups.indexOf("E+") != -1){cup_submit = 'E+';}
+
+
+
+            $('#submit_btn,[preview]').click(function(ev)
+            {
+                var is_preview = $(ev.currentTarget).attr('preview');
+                //头像
+                var data_icon = $('#show_icon').attr('src');
+                //上传的图片
+                var data_upload_pics = new Array();
+                //用户名
+                var data_nickname = $('#data_nickname').val();
+                //身高
+                var data_height = $('#data_height').val();
+                //体重
+                var data_weight = $('#data_weight').val();
+                //胸围
+                var data_chest = $('#data_chest').val();
+                //腰围
+                var data_waist = $('#data_waist').val();
+                //臀部
+                var data_hip = $('#data_hip').val();
+                //省
+                var data_province = $("#province option:selected").text();
+                //市
+                var data_city = $("#city option:selected").text();
+                //省市id
+                var data_location_id = $("#city option:selected").val();
+                //所需等级
+                var level_require = $('#credit-level').find(".cur").attr("level_require");
+                //人数限制
+                var person_num = $('#person_num').val();
+                //CUP尺寸
+                var cups_le = $('#cups_le option:selected').val();
+                //CUP大小
+                var cups = $('#cups option:selected').val();
+                //性别
+                var sexy = $("input[name=sexy]:checked").val();
+                //主风格价格
+                var data_main_price = $("#data_main_price").val();
+                //主风格时间
+                var data_main_hour = $("input[name=radio_money_mian]:checked").val();
+                //主风格
+                var data_main_style = $("#data_main_style").val();
+                //主风格续拍
+                var data_main_price_goon = $('#data_main_price_goon').val();
+				
+				// add by hudw
+				var city_name = $('#province').find("option:selected").text()+" "+$('#city').find("option:selected").text();
+
+                //风格获取
+                var main_arr = [{"price":data_main_price,"continue_price":data_main_price_goon,"style":data_main_style,"hour":data_main_hour}];
+
+                var other_arr = [];
+                $.each($("[col_other]"),function(i,obj)
+                {
+                    var idx = i+1;
+                    var str = '[name=radio_money_' + idx + ']';
+
+                    var array_in = {"price":$(obj).find("[name=other_style_price]").val(),"continue_price":$(obj).find("[name=other_style_price_goon]").val(),"style":$(obj).find("[name=other_style_style]").val(),"hour":$(obj).find(str).val()};
+
+
+                    other_arr.push(array_in);
+                });
+
+                var new_model_style_arr = {"main":main_arr,"other" : other_arr};
+
+                $.each($('.upload_pics'),function(i,obj)
+                {
+                    data_upload_pics.push($(obj).attr('src'));
+                });
+
+                var submit_data =
+                {
+                    user_icon : data_icon,
+                    nickname : data_nickname,
+                    //cup : cups_le + $("#cups option:selected").text(),
+                    cup : cups,
+                    sex : sexy,
+                    height : data_height,
+                    weight : data_weight,
+                    chest_inch : cups_le,
+                    chest : data_chest,
+                    waist : data_waist,
+                    hip : data_hip,
+                    location_id : data_location_id,
+                    limit_num : person_num,
+                    level_require : level_require,
+                    pic_arr : data_upload_pics,
+                    new_model_style_arr : new_model_style_arr,
+                    is_preview : is_preview || 0,
+					city_name : city_name,
+					model_id : '{user_id}'
+                };
+
+                var price_is_null = false;
+                var hour_is_null = false;
+                var style_is_null = false;
+                var continue_price_is_null = false;
+                var error_text;
+                $.each(new_model_style_arr,function(i,obj)
+                {
+                    $.each(obj,function(_i,_i_obj)
+                    {
+                        console.log(_i_obj);
+                        console.log();
+                        if(_i_obj.price.trim() == "")
+                        {
+                            price_is_null = true;
+                            error_text = '价格不能为空';
+                        }
+                        if(parseInt(_i_obj.price.trim()) < 10 || parseInt(_i_obj.price.trim()) > 10000)
+                        {
+                            price_is_null = true;
+                            error_text = '价格需在10-10000之间';
+                        }
+                        if(isNaN(_i_obj.price))
+                        {
+                            price_is_null = true;
+                            error_text = '请正确输入价格';
+                        }
+                        if(_i_obj.hour.trim() == "")
+                        {
+                            hour_is_null = true;
+                            error_text = '时间不能为空';
+                        }
+                        if(isNaN(_i_obj.hour))
+                        {
+                            hour_is_null = true;
+                            error_text = '请正确输入时间';
+                        }
+                        if(parseInt(_i_obj.hour.trim()) < 0 || parseInt(_i_obj.hour.trim()) > 10000 )
+                        {
+                            hour_is_null = true;
+                            error_text = '时间不能小于0';
+                        }
+                        if(_i_obj.style.trim() == "")
+                        {
+                            style_is_null = true;
+                            error_text = '风格不能为空';
+                        }
+                        if(parseInt(_i_obj.continue_price.trim()) < 10 || parseInt(_i_obj.continue_price.trim()) >10000 || _i_obj.continue_price.trim() == "")
+                        {
+                            continue_price_is_null = true;
+                            error_text = '请正确填写续拍价格';
+                        }
+                    })
+                });
+
+
+                if(submit_data.nickname.length > 32)
+                {
+                    alert("昵称过长");
+                    return
+                }
+                else if(submit_data.nickname.trim().length == 0)
+                {
+                    alert("昵称不能为空");
+                    return
+                }
+                else if(submit_data.pic_arr.length < 3)
+                {
+                    alert("作品不得少于3张");
+                    return
+                }
+                else if(submit_data.city_name.indexOf('-') != -1)
+                {
+                    alert("请选择城市");
+                    return
+                }
+                else if(parseInt(submit_data.limit_num.trim()) == 0 || submit_data.limit_num.trim() == "" || parseInt(submit_data.limit_num.trim()) < 0)
+                {
+                    alert("请正确填写人数上限")
+                    return
+                }
+                else if(parseInt(submit_data.height.trim()) > 300 || submit_data.height.trim() == "" || parseInt(submit_data.height.trim()) <= 0 || isNaN(submit_data.height))
+                {
+                    alert("请正确填写身高");
+                    return
+                }
+                else if(parseInt(submit_data.weight.trim()) <= 0 || parseInt(submit_data.weight.trim()) > 150 || submit_data.weight.trim() == "" || isNaN(submit_data.weight))
+                {
+                    alert("请正确填写体重");
+                    return
+                }
+                else if(parseInt(submit_data.chest.trim()) <= 0 || parseInt(submit_data.chest.trim()) > 200 || submit_data.chest.trim() == "" || isNaN(submit_data.chest))
+                {
+                    alert("请正确填写胸围");
+                    return
+                }
+                else if(parseInt(submit_data.waist.trim()) <= 0 || parseInt(submit_data.waist.trim()) > 200 || submit_data.waist.trim() == "" || isNaN(submit_data.waist))
+                {
+                    alert("请正确填写腰围");
+                    return
+                }
+                else if(parseInt(submit_data.hip.trim()) <= 0 || parseInt(submit_data.hip.trim()) > 200 || submit_data.hip.trim() == "" || isNaN(submit_data.hip))
+                {
+                    alert("请正确填写臀围");
+                    return
+                }
+                else if (submit_data.level_require == "")
+                {
+                    alert("请选择信用等级要求");
+                    return
+                }
+                else if(price_is_null || hour_is_null || style_is_null || continue_price_is_null)
+                {
+                    alert(error_text);
+                    return
+                }
+                else
+                {
+                    $("#submit_btn").html("提交中...");
+                    //提交数据
+                    $.ajax
+                    ({
+                        url:"http://www.yueus.com/model/edit_model_card_post.php",
+                        data : submit_data,
+						type : 'POST',
+                        success : function()
+                        {
+                            alert('提交成功');
+                            if(is_preview)
+                            {
+                                $('#preview_iframe').attr("src",'http://www.yueus.com/wap/model_card/model_card.php?user_id={user_id}&is_preview=1');
+                            }
+                            else
+                            {
+                                $('#preview_iframe').attr("src",'http://www.yueus.com/wap/model_card/model_card.php?user_id={user_id}');
+                            }
+                            $('html, body').animate({ scrollTop :0}, 'slow');
+                            //$('#preview_iframe').attr("src",'http://yp.yueus.com/wap/model_card/model_card.php?user_id={user_id}&is_preview=1');//http://yp.yueus.com/wap/model_card/model_card.php?user_id=100029
+                        },
+                        error : function()
+                        {
+                            alert('提交失败');
+                        },
+                        complete : function()
+                        {
+                            $("#submit_btn").html("保存当前修改");
+                        }
+
+                    });
+                }
+
+
+
+                console.log(submit_data);
+
+                console.log(data_nickname,data_height,data_weight,data_chest,data_waist,data_hip);
+            })
+
+
+            //信用等级操作
+            var credit_level_data =
+                    [
+                        {
+                            txt:"V1：对方已获得手机认证",
+                            allow_position : "85px"
+                        },
+                        {
+                            txt:"V2：对方已获得实名认证",
+                            allow_position : "270px"
+                        },
+                        {
+                            txt:"V3：对方已获得达人认证",
+                            allow_position : "450px"
+                        }
+                    ];
+
+            $("#credit-level > li").on('click', function(ev) {
+                ev.preventDefault();
+                $(this).siblings().removeClass('cur');
+                $(this).addClass('cur');
+                //  当前索引
+                var index = $('#credit-level li').index($(this));
+                $("#credit-txt").html(credit_level_data[index].txt)
+                $("#allow").css({
+                    left: credit_level_data[index].allow_position
+                });
+
+            });
+
+            // 加减操作
+            var init_data = $("#limit_num").val();
+
+            $('#btn_reduce').click(function() {
+                if (init_data <= 1)
+                {
+                    return ;
+                }
+                init_data --;
+                $('#person_num').val(init_data);
+            });
+            $('#btn_add').click(function() {
+                if(init_data >= 10)
+                {
+                    return;
+                }
+                init_data ++;
+                $('#person_num').val(init_data);
+            });
+
+            //  选择风格
+            // $('.btn_sec_style').click(function() {
+            //         $('.fade').show();
+            //         $('.pop_sec_style').show();
+            // });
+
+            //设置风格选项
+            $.each(model_style_data,function(i,obj)
+            {
+                console.log(obj);
+                $('#btn_style_check').append('<li>' + obj.text +'</li>');
+
+                style_limit.push({"text":obj.text,"current": ""});
+            });
+
+
+            var $ele = $('#btn_style_check li');
+            var arr = []; //收集弹窗口数据
+
+            console.log(style_limit);
+            // 处理输入框显示的值
+            $('#col-wrap')
+                    .on('click', '.btn_sec_style', function(event) {
+                        event.preventDefault();
+                        $ele.removeClass('cur');
+                        arr = [] ;
+                        $('.fade').show();
+                        $('.pop_sec_style').show();
+                        window.output_val_ele =  $(this).siblings().find(".input-text-style");
+
+                        var current_col_style_str = $(this).siblings().find(".input-text-style").val();
+                        var current_col_style = [];
+                        var all_col_style = [];
+                        var current_col_style_insert;
+                        var all_col_style_insert;
+
+                        //获取所有col所有已选取的style ->  all_col_style;
+                        $.each($('[data_style_inputs]'),function(i,obj)
+                        {
+                            var str = $(obj).val();
+                            while(str.indexOf(' ') != -1)
+                            {
+                                all_col_style_insert = str.substring(0,str.indexOf(' '));
+                                str = str.substring(str.indexOf(' ')+1,str.length);
+                                all_col_style.push(all_col_style_insert);
+                            }
+                            if(str.length != 0)
+                            {
+                                all_col_style.push(str);
+                            }
+                        });
+
+                        //获取当前col已选取的style ->
+                        while(current_col_style_str.indexOf(' ') != -1)
+                            {
+                                current_col_style_insert = current_col_style_str.substring(0,current_col_style_str.indexOf(' '));
+                                current_col_style_str = current_col_style_str.substring(current_col_style_str.indexOf(' ')+1,current_col_style_str.length);
+                                current_col_style.push(current_col_style_insert);
+                            }
+                        if(current_col_style_str.length != 0)
+                        {
+                            current_col_style.push(current_col_style_str);
+                        }
+
+
+                        $.each(style_limit,function(i,obj)
+                        {
+                            obj.current = "";
+                        });
+                        $.each($('#btn_style_check li'),function(i,obj)
+                        {
+                            $(obj).removeClass("cur").removeClass("none");
+                        });
+                        //设置none不可选类
+                        $.each(style_limit,function(i,obj)
+                        {
+                            $.each(all_col_style,function(_i,_i_obj)
+                            {
+                                if(_i_obj == obj.text)
+                                {
+                                    obj.current = "none";
+                                }
+                            })
+                        });
+
+                        //设置cur可操作类
+                        $.each(style_limit,function(i,obj)
+                        {
+                            $.each(current_col_style,function(_i,_i_obj)
+                            {
+                                if(_i_obj == obj.text)
+                                {
+                                    obj.current = "cur";
+                                }
+                            })
+                        });
+
+
+                        $.each($('#btn_style_check').children(),function(i,obj)
+                        {
+                            $(obj).addClass(style_limit[i].current);
+                        })
+                        console.log($('#btn_style_check').children());
+                        console.log(style_limit);
+
+                    })
+                    .on('click', '.close', function(event) {
+                        $(this).parents('.col').remove();
+                    });
+
+            // 处理弹窗口li选择样式
+            $ele.on('click',  function(event) {
+                event.preventDefault();
+                $(this).toggleClass('cur');
+            });
+
+
+            // 点击确认显示值 关闭窗口
+            $('#btn_confirm').click(function() {
+                $check_li = $('#btn_style_check').find('.cur');
+                if ($check_li.length > 3)
+                {
+                    //alert("最多只能选择三个风格！");
+                    //return
+                }
+                $check_li.each(function() {
+                    arr.push($(this).html())
+                });
+
+                //$('#data_main_style').val(arr.toString());
+                $('.fade').hide();
+                $('.pop_sec_style').hide();
+
+                output_val_ele.val( arr.join(" ") );
+            });
+
+            //  关闭窗口
+            $('.close').click(function() {
+                $('.fade').hide();
+                $('.pop_sec_style').hide();
+            });
+
+
+
+
+
+            $('#btn-end').click(function() {
+                var num = ++($('[col_other]').length);
+
+                var html_render = '<div class="col" col_other><div class="close"><a href="#this"></a></div><div class="box1"><span class="cor1">其他价格及风格_'+ num  + '</span><span class="cor2"> (主价格及风格会优先展示在模特卡)</span></div><div class="wbox clearfix"><div class="lbox fldi">价格：</div><div class="rbox fldi"><div class="money f14"><input type="text" name="other_style_price" id=" " class="input-text mr10" /><label><input type="radio" name="radio_money_'+ num  + '" id=" " class="input-radio" value="4" checked/>元/4小时</label><label><input type="radio" name="radio_money_'+ num  + '" id=" " class="input-radio ml10" value="2"/>元/2小时</label></div></div></div><div class="wbox clearfix"><div class="lbox fldi">续拍：</div><div class="rbox fldi"><div class="money f14"><input type="text" name="other_style_price_goon" id=" " class="input-text mr10" />元/小时</div></div></div><div class="wbox clearfix"><div class="lbox fldi">风格：</div><div class="rbox fldi"><div class="money f14 money-ib"><input type="text" name="other_style_style" id="" data-style-con="a-1" data_style_inputs class="input-text mr10 input-text-style" readonly/></div><div class="btn2 btn_sec_style" data-style-btn="a-1">选择/修改风格</div></div></div></div>';
+                $(this).before(html_render);
+            });
+				
+                
+        });
+
+
+
+
+</script>
+
+</body>
+</html>

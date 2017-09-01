@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script src="jquery.js"  type="text/javascript" ></script>
+</head>
+
+<div class="test" id="1" test_attr>测试</div>
+<div class="test" id="1" test_attr>测试</div>
+
+
+<div class="test2" id="1" test_attr2>测试</div>
+<div class="test2" id="1" test_attr2>测试</div>
+<div class="test2" id="1" test_attr2>测试</div>
+
+<body>
+<script type="text/javascript">
+
+$(function() {
+
+    var len = $('[test_attr]').length ;
+
+    // $('[test_attr]').click(function() {
+
+    //         console.log(123);
+    // });
+
+    var id = $('[test_attr]').attr('id');
+ 
+
+    var id  = 1 ;
+    var arr = [];
+    // var data = [];
+    var a = 1 ;
+    $('[test_attr]').each(function(k) {
+
+
+            // console.log(k);
+
+            // $('[test_attr2]').each(function(i) {
+                
+            //         console.log(k);
+
+            // });
+            // 
+            // 
+            
+
+        switch ( Number(k) )
+        {
+            case 0: 
+                a = 2 ;
+                var data = [];
+                data.push({
+                    name : 'zky'
+                })
+
+            break;
+
+            case 1: 
+                console.log(a);
+                var data = [];
+                data.push({
+                    age : '28'
+                })
+
+            break;
+
+
+        }     
+  
+
+        arr.push({
+            k : k ,
+            data : data
+        })
+
+
+
+    });
+
+    // var a = '1';
+    // var a = Number(a);
+    
+
+
+
+   
+    console.log(arr);
+
+    console.log(arr[0].data[0].name);
+    // console.log( arr[0].name );
+
+});
+
+
+
+</script>
+</body>
+</html>

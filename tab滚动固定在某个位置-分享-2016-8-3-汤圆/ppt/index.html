@@ -1,0 +1,204 @@
+<!--
+    Powered By nodePPT - This is probably the best web presentation tool so far!
+    version: 0.9.8-3
+    site: https://github.com/ksky521/nodePPT
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>tab滚动固定在某个位置 - By 汤圆</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt2.0.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    <link rel="stylesheet" media="print" href="./css/pdf.css">
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css"></head>
+<body>
+    <div class="slides">
+        <slides id="container">
+            <slide class="slide fill current pagedown" style="background-image:url('./img/bg1.png')">
+                <section class="slide-wrapper">
+                    <article class="flexbox vcenter">
+                        <h1>tab滚动固定在某个位置</h1>
+                        <p>
+                            <small>汤圆</small>
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <article>
+                        <p>http://goods.yueus.com/?goods_id=2149349</p>
+                        <br />
+                        <p>
+                            <img src="./img/1.jpg">
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <hgroup>
+                        <h2>在做约约pc商品详情页滚动时候遇到的问题？</h2>
+                    </hgroup>
+                    <article>
+                        <ul class="moveIn">
+                            <li>当只有1个tab的时候？</li>
+                            <li>当有多个tab的时候？</li>
+                            <li>第一个tab与第二个tab，第n个tab如何过渡？</li>
+                            <li>lazyload 图片的影响？如何解决？</li>
+                        </ul>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <article>
+                        <p>http://goods.yueus.com/?goods_id=2113817</p>
+                        <br />
+                        <p>
+                            <img src="./img/2.jpg">
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <hgroup>
+                        <h2>现在线上遗留的问题：</h2>
+                    </hgroup>
+                    <article>
+                        <ul class="moveIn">
+                            <li>当滚动到对应区域，tab无法显示对应的模块</li>
+                            <li>用lazyload的时候，由于图片未加载完，卷去的高度未知，无法定位到对应区域</li>
+                        </ul>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <article>
+                        <p>问题来了，如何优化？技术本身就是发现问题，解决问题！</p>
+                        <br />
+                        <p>
+                            <img src="./img/3.jpg">
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <article>
+                        <p>一言不合就上代码</p>
+                        <br />
+                        <p>
+                            <img src="./img/4.jpg">
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <hgroup>
+                        <h2>实现原理？</h2>
+                    </hgroup>
+                    <article>
+                        <ul class="moveIn">
+                            <li>循环获取到每个模块的位置，push到数组，作为滚动的参考位置</li>
+                            <li>监听窗口滚动，当卷去的区域大于数组模块的位置时，把最后一个key添加当前样式</li>
+                            <li>解决lazyload定位不准的问题，滚动到当前区域，用锚点（是否可行？未验证）</li>
+                        </ul>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide fill" style="background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);">
+                <section class="slide-wrapper">
+                    <article>
+                        <p>本例子只是简单的思路，如果想扩展可以通过自己需求更改。目的是通过这个滚动位置实例，在平时开发中，懂的如何分析问题，解决问题，优化代码组织结构。让编码更加优雅与艺术一点。</p>
+                        <br />
+                        <p>
+                            <img src="./img/5.jpg">
+                        </p>
+                    </article>
+                </section>
+            </slide>
+
+            <slide class="slide  fill" style="background-image:url('./img/bg1.png')">
+                <section class="slide-wrapper">
+                    <article class="flexbox vcenter">
+                        <h1>Q &amp; A</h2>
+                        <h2>Thank You!</h3>
+                    </article>
+                </section>
+            </slide>
+
+            <div class="slideTip" id="tip"></div>
+
+        </slides>
+    </div>
+    <canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+    <div class="progress">
+        <span id="progress"></span>
+    </div>
+    <div id="_buttons">
+        <div class="_btn-box" id="_btn-box" style="display:none;">
+            <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+            <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+            <button class="fa fa-paint-brush" id="_btn-brush"></button>
+            <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+        </div>
+        <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+    </div>
+    <script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+    <script>
+var base = location.protocol + '//' + location.host;
+var path = location.pathname.split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+</script>
+    <script src="./js/mixjs/lib/event/broadcast.js"></script>
+    <script src="./js/nodeppt.js"></script>
+    <script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'horizontal3d',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/hljs-0.8.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+    <script src="./js/demo.js"></script>
+    <link rel="stylesheet" href="./css/demo.css"></body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+</head>
+
+<body>
+    测试
+    <script type="text/javascript">
+        var test = 
+        {
+            default_page : function()
+            {
+                    //页码设置
+                    this.pages = {
+                        'home_page' : 0,//这个只拿一次，下面的第一次时已近是已所以初始为1
+                        'hot_model' : 1,
+                        'comment_score_top' : 1
+                    }
+            },
+
+            set_current_page : function(page,style) 
+            {
+                page && (this.pages[style] = page);
+            }
+        }
+
+        test.default_page()
+        console.log(test.pages);
+        test.set_current_page(9,'home_page');
+        console.log(test.pages);
+    </script>
+</body>
+</html>   

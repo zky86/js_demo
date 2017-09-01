@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="jquery-1.11.2.min.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+<input type="text" name="" value="" id="test" style="width:200px">
+
+
+
+<div id="test_click">
+    <a href="http://www.yueus.com/" id="test3">
+        <div  data-x="1">测试</div>
+        <div>1111111111111333333</div>
+    </a>
+</div>
+
+
+
+<script type="text/javascript">
+
+$("#test").on('input propertychange', function() {
+    console.log(123);
+    setTimeout(function(){
+        console.log(11);
+    }, 1000)
+});
+
+
+$("#test_click").on('click', function(e) {
+    var data_class = $(e.target).attr("data-x");
+    if (data_class) 
+    {
+        console.log('我被点击，但是无法跳转');
+        e.preventDefault();
+    }
+});
+
+</script>
+</body>
+</html>

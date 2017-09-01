@@ -1,0 +1,25 @@
+<html>
+<script type="text/javascript" src='./vue.js'></script>
+<body>
+    <ul id="example-1">
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+    </ul>
+</body>
+<script>
+    var example1 = new Vue({
+        el: '#example-1',
+        data : function(){
+            return {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ]
+            }
+        }
+    })
+
+    //example1.items.push({message:'John'})
+</script>
+</html>

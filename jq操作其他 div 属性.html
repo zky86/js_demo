@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+<ul class="list clearfix">
+    <li data_style_inputs>1</li>
+    <li data_style_inputs>2</li>
+    <li data_style_inputs>3</li>
+    <li data_style_inputs data_style_inputs>4</li>
+    <li data_style_inputs>5</li>
+</ul>        
+<script type="text/javascript">
+
+$.each($('[data_style_inputs]'),function(i,obj)
+{
+   console.log(obj);
+});
+    
+</script>
+</body>
+</html>   

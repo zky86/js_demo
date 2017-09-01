@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+</head>
+
+<script type="text/javascript">
+
+    var obj = 
+    {
+        default_page : function(style){
+
+            var self = this;
+            self.pages = {};
+
+            console.log(style);
+
+            self.pages[style] = 2;
+
+            console.log(self.pages);
+        },
+
+         get_current_page: function(style)
+        {
+            var self = this;
+            return self.pages[style] || 1;
+        }
+
+    }
+
+    obj.default_page("time");
+
+    console.log(obj.get_current_page("time")); 
+
+
+
+
+    // function test(style)
+    // {
+    //     pages = {};
+    //     pages[style] = 1;
+    // }
+
+    // test("time");
+
+    // console.log(pages);
+
+
+</script>
+
+
+<body>
+</body>
+</html>   

@@ -1,0 +1,30 @@
+<html>
+<script type="text/javascript" src='./vue.js'></script>
+<body>
+
+    <!-- 这是我们的 View -->
+    <div id="example-1" @click='you_have_clicked($event)'>
+        Hello {{ name }}!
+    </div>
+
+</body>
+<script>
+    //一般写法
+    var exampleVM = new Vue({
+        el: '#example-1',
+        data: function(){
+            return{
+                name : 'vue.js'
+            }
+        },
+        methods : {
+            you_have_clicked: function(event){
+                console.log('clicked!');
+                console.log(event);
+            }
+        }
+    });
+
+    //exampleVM.name = 'mvvm'
+</script>
+</html>

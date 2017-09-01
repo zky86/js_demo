@@ -1,0 +1,24 @@
+<html ng-app="myNoteApp">
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+<body>
+
+<div ng-controller="myNoteCtrl">
+
+<h2>我的笔记</h2>
+
+<p><textarea ng-model="message" cols="40" rows="10"></textarea></p>
+
+<p>
+<button ng-click="save()">保存</button>
+<button ng-click="clear()">清除</button>
+</p>
+
+<p>Number of characters left: <span ng-bind="left()"></span></p>
+
+</div>
+
+<script src="myNoteApp.js"></script>
+
+
+</body>
+</html>

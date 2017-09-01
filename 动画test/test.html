@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+</head>
+    <script type="text/javascript" src="zepto.js"></script>
+<body>
+
+<style type="text/css">
+.icon{
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+
+.icon:before {
+  background-image: url('./loading-40x40.png');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
+
+.icon-spinner:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+
+
+.ui-loading-animate {
+  -webkit-animation: loading-rotate 2s linear infinite;
+  animation: loading-rotate 2s linear infinite;
+}
+
+@-webkit-keyframes loading-rotate {
+  /* line 104, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 108, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  /* line 112, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-rotate {
+  /* line 104, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 108, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  /* line 112, ../../ui/src/pai/paiappstyle/component/_load-animate.scss */
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+</style>
+<div id="inp"></div>  
+    <div class="ui-btn-refresh  " data-role="load-more-container-v2">
+        <i class="icon icon-spinner ui-loading-animate" id="test"></i> <span class="load-txt" data-role="load-txt">点击加载更多...</span>  <!-- ui-loading-animate -->
+    </div>
+
+
+<script type="text/javascript">
+
+function load (){  
+  
+    document.addEventListener('touchstart',touch, false);  
+    document.addEventListener('touchmove',touch, false);  
+    document.addEventListener('touchend',touch, false);  
+    document.addEventListener('webkitTransitionEnd',this, false);  
+
+
+
+    function touch (event){  
+
+      
+        var event = event || window.event;  
+          
+        var oInp = document.getElementById("inp");  
+  
+        switch(event.type){  
+            case "touchstart":  
+                oInp.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";  
+                break;  
+            case "touchend":  
+                oInp.innerHTML = "<br/>Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";  
+                break;  
+            case "touchmove":  
+                event.preventDefault();  
+                oInp.innerHTML = "<br/>Touch moved (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";  
+                break;  
+        }  
+          
+    }  
+}  
+load ();
+
+    $(document).ready(function() {
+
+
+
+document.getElementById('test').addEventListener('webkitTransitionEnd', this, false);
+
+
+
+        $('#test').on('click',  function() {
+            $('#test').removeClass('ui-loading-animate');
+            /* Act on the event */
+        });
+
+        $('#test').on('webkitTransitionEnd',  function() {
+            alert(1)
+            /* Act on the event */
+        });
+    });
+</script>
+
+
+</body>
+</html>

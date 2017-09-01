@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>无标题文档</title>
+        <style>
+             * {
+                padding: 0;
+                margin: 0
+            }
+            
+            img {
+                border: none
+            }
+            
+            body {
+                margin: 33px 38px;
+                font: 14px / 1.7 Verdana, Arial, sans-serif;
+            }
+            
+            a {
+                color: #06C;
+                text-decoration: underline;
+            }
+            
+            a:hover {
+                color: #0F4780;
+                text-decoration: none;
+            } .wcss {
+            }
+            
+            li {
+                list-style-type: none
+            } #breadcrumbButong {
+                margin-bottom: 33px;
+            }
+            
+            /* =S Pic List */ #picGallery {
+                float: left;
+                width: 326px;
+                margin: 32px 10px 0 0;
+            } #picGallery .group {
+                border: 1px solid #666;
+                margin-bottom: 10px;
+            } #picGallery .title {
+                margin: 0;
+                padding: 0.6em;
+                background: #BBB;
+                font-size: 14px;
+            } #picGallery .close .title {
+                cursor: pointer;
+            } #picGallery .photos {
+                overflow: hidden;
+                padding: 3px;
+                _zoom: 1;
+            } #picGallery .photos img {
+                float: left;
+                width: 100px;
+                height: 60px;
+                padding: 3px;
+            } #picGallery a.current img {
+                padding: 1px;
+                border: 2px solid #C96500;
+            } #picGallery .close .photos {
+                display: none;
+            } #picGallery .close .title {
+                background: #DDD;
+            }
+            
+            /* =E Pic List */
+            /* =S Pic Show */ #picShow {
+                position: relative;
+                float: left;
+                width: 500px;
+                min-height: 280px;
+            } #picShow img {
+                width: 500px;
+                vertical-align: top;
+            } #picShow .state {
+                display: none;
+            } #picShow.loading .state {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #000 url("loading.gif") 50% 50% no-repeat;
+                opacity: 0.7;
+                filter: alpha( opacity = 70);
+            
+            _height:
+                58px;
+            }
+            
+            /* =E Pic Show */
+            /* =S Pic Action */ #picAction {
+                margin-left: 336px;
+                padding-top: 35px
+            } #picAction .actions {
+                padding: 0 0 12px 204px;
+                line-height: 1;
+            } #picAction .actions span {
+                display: inline-block;
+                margin: 0 5px;
+                border: 10px solid #FFF;
+                border-width: 10px 18px;
+                vertical-align: top;
+                cursor: pointer; *
+            
+            width:
+                0; * height:
+                0; * overflow:hidden;
+            } #picAction .actions .left {
+                border-right-color: #BBB;
+            } #picAction .actions .right {
+                border-left-color: #BBB;
+            } .title {
+                cursor: pointer
+            }
+			
+			.wcss{ height:400px; overflow:hidden; float:left}
+        </style>
+        <script type="text/javascript" src="jquery-1.4.4.min.js">
+        </script>
+    </head>
+    <body>
+        <div id="picGallery">
+            <div class="group">
+                <h2 class="title">创意设计图片</h2>
+                <div class="photos" id="picimg">
+                    <a class="current" href="#"><img src="http://farm6.static.flickr.com/5249/5283989043_6881ae2c3f_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5082/5284586806_2f7ef27d6d_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5245/5283989101_6bb67e0582_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5043/5283989275_e79d006b8a_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5003/5284586874_eaeb94ac2a_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5162/5283989177_6804f6f704_t.jpg" alt="" /></a><a href="#"><img src="http://farm6.static.flickr.com/5047/5283989209_51f1d03bab_t.jpg" alt="" /></a><a href="#"><img src="http://farm2.static.flickr.com/1420/5283989247_76d7d3c3db_t.jpg" alt="" /></a>
+                </div>
+            </div>
+            <div class="group">
+                <h2 class="title">黑白街景</h2>
+                <div class="photos">
+                    <a href="http://farm6.static.flickr.com/5005/5283965975_5f9601501f.jpg"><img src="http://farm6.static.flickr.com/5201/5284587036_a0f3fdb136_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5250/5283966025_35d214bb10.jpg"><img src="http://farm6.static.flickr.com/5049/5284592874_f351cc1c3e_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5243/5283966117_191e7781be.jpg"><img src="http://farm6.static.flickr.com/5006/5284587426_e8c526152d_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5123/5284563824_9ff768793c.jpg"><img src="http://farm6.static.flickr.com/5122/5284587120_43d9687bd5_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5168/5284563896_2dd3fd4258.jpg"><img src="http://farm6.static.flickr.com/5202/5283989441_a7100dd9a8_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5123/5283966349_5506d5f4f5.jpg"><img src="http://farm6.static.flickr.com/5002/5283989461_4fc872b43f_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5001/5284564020_998d80121f.jpg"><img src="http://farm6.static.flickr.com/5284/5284587222_ebeab295d7_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5206/5283966587_d73d67f32f.jpg"><img src="http://farm6.static.flickr.com/5169/5284587274_3905a97441_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5288/5284564256_376f095668.jpg"><img src="http://farm6.static.flickr.com/5005/5284595406_aa61a1de56_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5169/5284564324_05f1234a84.jpg"><img src="http://farm6.static.flickr.com/5001/5284587346_97b9c30473_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5202/5283966807_3d846a29db.jpg"><img src="http://farm6.static.flickr.com/5005/5283989621_6124bbbff0_t.jpg" alt="" /></a>
+                </div>
+            </div>
+            <div class="group">
+                <h2 class="title">数字绘画：龙</h2>
+                <div class="photos">
+                    <a href="http://farm6.static.flickr.com/5083/5283966923_59c02f9430_b.jpg"><img src="http://farm6.static.flickr.com/5090/5284587996_8662062000_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5282/5283967001_50263cccb7.jpg"><img src="http://farm6.static.flickr.com/5083/5283989691_b04e1ab935_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5121/5283967089_32316b195c.jpg"><img src="http://farm6.static.flickr.com/5166/5283989737_7fc31af1f6_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5287/5283967159_a6b0429b43_b.jpg"><img src="http://farm6.static.flickr.com/5165/5284588026_01b11258f6_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5208/5283967233_696393cc67_z.jpg"><img src="http://farm6.static.flickr.com/5005/5284587530_700d512c2f_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5090/5284564968_3fb7f5d6d6_b.jpg"><img src="http://farm6.static.flickr.com/5088/5284588052_fa4349ef41_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5163/5284565068_cb77196f79.jpg"><img src="http://farm6.static.flickr.com/5041/5284587558_6dd35eb6d7_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5247/5283967467_2157f1be9e_b.jpg"><img src="http://farm6.static.flickr.com/5285/5284587594_1993e1fd3f_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5044/5284565332_cde13070c3.jpg"><img src="http://farm6.static.flickr.com/5087/5284598910_3b41217c18_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5244/5284565434_1bbeba813e_b.jpg"><img src="http://farm6.static.flickr.com/5001/5284588100_6cc90fbc9d_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5209/5283967835_a27ae2b7e3_b.jpg"><img src="http://farm6.static.flickr.com/5050/5284588130_7435ee6572_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5086/5283967905_287ffaa000_z.jpg"><img src="http://farm6.static.flickr.com/5006/5283989919_d42a41a90a_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5283/5283967997_5d2a2c71b0_b.jpg"><img src="http://farm6.static.flickr.com/5048/5284587702_e0e2197e49_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5088/5284565778_48034aab37_b.jpg"><img src="http://farm6.static.flickr.com/5084/5283989973_86caab29af_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5130/5283968193_e8183292aa.jpg"><img src="http://farm6.static.flickr.com/5081/5284587760_54dce545a8_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5290/5284565954_6049e7904a_b.jpg"><img src="http://farm6.static.flickr.com/5008/5283990049_0ff170669d_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5245/5283968345_628b21b9bd.jpg"><img src="http://farm6.static.flickr.com/5245/5283990091_e3f82a26ac_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5284/5283968411_9d6103866d_b.jpg"><img src="http://farm6.static.flickr.com/5127/5283990115_a991572ef0_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5129/5283968477_0bbfbe03ae.jpg"><img src="http://farm6.static.flickr.com/5128/5283990147_9e152223db_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5126/5283968587_61c352a070_b.jpg"><img src="http://farm6.static.flickr.com/5006/5284587932_06711baa48_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5083/5283968667_37fee36b4c.jpg"><img src="http://farm6.static.flickr.com/5010/5284587966_5a4cd4fb53_t.jpg" alt="" /></a>
+                </div>
+            </div>
+            <div class="group">
+                <h2 class="title">美丽经典的教堂摄影</h2>
+                <div class="photos">
+                    <a href="http://farm6.static.flickr.com/5087/5284566526_fe5b370666.jpg"><img src="http://farm6.static.flickr.com/5241/5284588174_3e666d57f0_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5281/5283968921_43a024dffb.jpg"><img src="http://farm6.static.flickr.com/5244/5283990419_1d5c9f0cd7_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5081/5283969003_b0bfa65747.jpg"><img src="http://farm6.static.flickr.com/5088/5283990441_c021f798ed_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5167/5284566846_787057bbc0.jpg"><img src="http://farm6.static.flickr.com/5002/5283990899_fa5e054d3f_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5006/5284566918_8262058e27.jpg"><img src="http://farm6.static.flickr.com/5169/5283990473_d8b28f80f1_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5207/5284567008_f622c97c02.jpg"><img src="http://farm6.static.flickr.com/5246/5284588292_0717bee660_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5087/5284567082_4761f7c51b.jpg"><img src="http://farm6.static.flickr.com/5002/5283990547_108d93c6c3_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5210/5284567178_17d160346f.jpg"><img src="http://farm6.static.flickr.com/5124/5283990577_3d482897a4_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5241/5283969431_9a035b6a72.jpg"><img src="http://farm6.static.flickr.com/5047/5283990617_d3044eca85_t.jpg" alt="" /></a>
+                </div>
+            </div>
+            <div class="group">
+                <h2 class="title">视角独特的建筑摄影</h2>
+                <div class="photos">
+                    <a href="http://farm6.static.flickr.com/5282/5283969497_7349675de5.jpg"><img src="http://farm6.static.flickr.com/5245/5283990653_eb603b8be5_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5244/5284567396_1a17606457.jpg"><img src="http://farm6.static.flickr.com/5007/5284588430_617466e7b4_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5008/5283969651_cafc53795f.jpg"><img src="http://farm6.static.flickr.com/5169/5284588480_accbe45e9c_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5001/5284567512_c0c627acbd.jpg"><img src="http://farm6.static.flickr.com/5168/5283990739_8e093188fd_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5285/5284567572_6f3310c21f.jpg"><img src="http://farm6.static.flickr.com/5007/5284588546_3f9d9efc8c_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5247/5284567626_79f0744bd5.jpg"><img src="http://farm6.static.flickr.com/5081/5283990807_33caf761fe_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5283/5283969861_50c8591581.jpg"><img src="http://farm6.static.flickr.com/5122/5283990829_bbbeca83fa_t.jpg" alt="" /></a><a href="http://farm6.static.flickr.com/5122/5284567730_fa8f0a7f01.jpg"><img src="http://farm6.static.flickr.com/5246/5284588628_598ec5d6a6_t.jpg" alt="" /></a>
+                </div>
+            </div>
+        </div>
+		
+		<style>
+			#page{ margin:25px 0 15px 510px; font-weight:bold}
+	
+			</style>
+			<div id="page"><a href="javascript:void(0)" id="back">上一页</a>&nbsp;&nbsp;<a href="javascript:void(0)" id="farward">下一页</a> 目前第<span id="nownum">1</span>张</div>
+		
+		
+		
+        <div class="wcss">
+            <div id="test">
+                <li>
+                    <img src="1.jpg">
+                </li>
+            </div>
+			
+			
+        </div>
+        <div id="picShow">
+        </div>
+        <script>
+            $(document).ready(function(){
+                $(".photos").hide();
+                $(".photos:eq(0)").show();
+                
+                $(".title").each(function(){
+                    $(this).click(function(){
+                        $(this).siblings().slideToggle("1000");
+                        $(this).parent().siblings().find(".photos").slideUp("1000")
+                        
+                    })
+                });
+                
+                       
+				var num=$("#picimg a");
+				
+				var numt;
+				
+				
+				num.click(function(){
+				
+					indexnum=num.index($(this));
+					var srt = '<li><img src=' + (indexnum + 1) + '.jpg /></li>';
+					$("#test").slideUp(500, function(){
+                            $(this).children().remove();
+                            $(this).html(srt).appendTo($(this).parent()).slideDown( 300);
+                        })
+						
+					 $(this).addClass("current");
+                     $(this).siblings().removeClass("current");
+					 $("#nownum").html(indexnum+1)
+					 
+					 
+			
+				});
+				
+				
+				$("#back").click(function(){
+						
+						if(typeof(indexnum)=="undefined"){
+				
+					  	alert("已经是第一张")
+						
+						}else{
+						
+						var srt = '<li><img src=' + (indexnum) + '.jpg /></li>';
+						$("#test").slideUp(500, function(){
+                            $(this).children().remove();
+                            $(this).html(srt).appendTo($(this).parent()).slideDown( 300);
+							num.removeClass("current");
+							num.eq(indexnum-1).toggleClass("current");
+							indexnum--;						
+							
+                        })
+												
+						$("#nownum").html(indexnum);
+						if(indexnum==0)
+							
+							alert("这已经是第一张");
+							 
+						
+					
+						}
+
+					 
+				
+					 
+				
+				})
+					
+				
+				$("#farward").click(function(){
+				
+				var sonum=indexnum;
+				  					if(typeof(sonum)=="undefined"){
+				
+					  	alert("已经是最后一张")
+						
+						}else{
+						
+						var srt = '<li><img src=' + (sonum) + '.jpg /></li>';
+						$("#test").slideUp(500, function(){
+                            $(this).children().remove();
+                            $(this).html(srt).appendTo($(this).parent()).slideDown( 300);
+							num.removeClass("current");
+							num.eq(sonum-1).toggleClass("current");
+							sonum++;						
+							
+                        })
+												
+						$("#nownum").html(sonum);
+						if(sonum==0)
+							
+							alert("这已经是最后一张");
+							 
+						
+					
+						}
+				
+				})
+					                   
+                                           
+            })
+        </script>
+    </body>
+</html>

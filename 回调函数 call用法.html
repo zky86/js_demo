@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<!-- <script src="js/.js"  type="text/javascript" ></script> -->
+</head>
+<body>
+<script type="text/javascript">
+    // function test_1() 
+    // {
+    //     this.name = 'zky'
+    //     console.log(this);
+    // }
+    // // var c = new test_1();
+
+    // function test_2() 
+    // {
+    //     test_1.call(this);
+    //     console.log(this);
+    // }
+
+    // var d = new test_2();
+    // 
+    // 
+    function test(option,callback) 
+    {
+        var option = option || {} ;
+        var name = option.name ;
+        var data = "123";
+        callback.call(this,data);
+    }
+
+    test({
+        name : 'zky'
+    },function(data){
+        console.log(data);
+    })
+
+
+    function Obj()
+    {
+        this.value="对象！";
+    }
+    var value="global 变量";
+    
+    function Fun1(){
+        alert(this.value);
+    }
+
+    window.Fun1();   //global 变量
+    Fun1.call(window);  //global 变量
+    Fun1.call(document.getElementById('myText'));  //input text
+    Fun1.call(new Obj());   //对象！
+
+</script>
+</body>
+</html>

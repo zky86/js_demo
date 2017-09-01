@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>商品列表</title>
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.3, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="wap-font-scale" content="no">
+    <!-- <link rel="import" href="./webcontrol/head.tpl.html?__inline"> -->
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/base.scss'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/reset.scss'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/no-use/yue-ui-not.css'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/yue_ui/yue-ui-list.css'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/yue_ui/yue-ui-button.css'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/mobileBase.css'>
+    <link charset="utf-8" rel="stylesheet" href='../../../../style/sale_list/list.scss'>
+    <!-- <meta name="wap-font-scale" content="no"> -->
+    <script src="../../../../lib/vue.min.js"></script>
+    <script src="../../../../lib/mod.js"></script>
+    <script src="../../../../lib/lib.js"></script>
+
+
+</head>
+<body>
+<div class="demo-page w1000 font_wryh content" id="page-main">
+    <header class="global-header ui-border-b">
+        <div class="wbox clearfix">
+            <h3 class="title">商品列表</h3>
+        </div>
+    </header>
+
+    <div class="yue-ui-list-single-pic">
+        <div v-for='(index, item) in list' class="item mb15 p15" style="position: relative" @click.stop='go_to_goods(item.material_id)'>
+            <div  class="img-con mr15">
+                <img class="img" :src='item.image'/>
+            </div>
+            <div class="text-con">
+                <p class="p1">
+                    <% item.title %>
+                </p>
+                <p class="p3 color-999">
+                    推广地址：<% item.act_url %>
+                </p>
+            </div>
+            <div class="sale_button_in_list mb10 mr10" >
+                <button class="ui-button  ui-button-inline-block  ui-button-size-x ui-button-bg-ff6">
+                    <span class="ui-button-content f14">我要推广</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button v-show="load_more_btn" class="ui-button ui-button-block ui-button-100per ui-button-size-l ui-button-bg-fff-has-active"  @click.stop='load_more($event)'>
+        <span class="ui-button-content f16"><% load_more_text %></span>
+    </button>
+</div>
+</body>
+<script>
+    Vue.config.delimiters = ['<%','%>'];//定界符修改
+    Vue.config.unsafeDelimiters = ['<%%','%%>'];
+
+    var resource = require('../../../../modules/common/vue/resource/vue-resource');
+
+    Vue.use(resource);
+
+    var search_title = '{search_title}';
+    var category_id = '{category_id}';
+
+    var vm = new Vue({
+        ready : function(){
+            this.$emit('fetch');
+        },
+        el: '#page-main',
+        data : function(){
+            return {
+                page : 1,
+                list : [],
+                load_more_btn : true,
+                load_more_text : '加载更多'
+            }
+        },
+        computed : {
+            category_child : function(){
+                for(var i in this.$data.category)
+                {
+                    console.log(this.$data.category_cur_id,this.$data.category[i].id)
+                    if(this.$data.category_cur_id == this.$data.category[i].id){
+                        console.log(this.$data.category[i].child)
+                        return this.$data.category[i].child
+                    }
+                }
+            }
+        },
+        events :{
+            'fetch' : function(){
+                this.$http.post('../ajax/sale_list_list.php', {page:this.page,search_title:search_title,category_id:category_id}, {
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    emulateJSON: true
+                }).then(function(response){
+                    console.log(response);
+                    var data = response.data;
+
+                    if(data.result_data.length != 0){
+                        this.$data.list = this.$data.list.concat(data.result_data);
+                        vm.page++;
+                    }
+                    else{
+                        this.$data.load_more_text = '已经到底了';
+                    }
+                }, function(response) {
+                    // handle error
+                });
+            }
+        },
+        methods : {
+            'load_more' : function(e){
+                this.$emit('fetch');
+            },
+            'go_to_goods' : function(material_id){
+                location.href = '../sale_goods/index.php?material_id=' + material_id;
+            }
+        },
+        components: {
+
+        }
+    });
+
+</script>
+
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<style type="text/css">
+    .new{height: 900px;}
+    #test{width: 100px; height: 100px;background-color: #000;color: #fff}
+</style>
+
+
+
+<div class="new"></div>
+
+<div id="test">测试</div>
+
+<script type="text/javascript">
+    var test = document.getElementById("test");
+
+    var h = document.documentElement.clientHeight ;
+
+    var divTop = document.getElementById("test").offsetTop;
+
+    t = h/2 ;
+
+    if ( divTop > t ) {
+        alert("上面显示")
+    }else{
+        alert("下面显示 ")
+    };
+
+
+
+
+
+    
+
+
+</script>
+
+</body>
+</html>   

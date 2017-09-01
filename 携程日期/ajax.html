@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- <link href="css/.css"  type="text/css" rel="stylesheet" />
+    -->
+    <script src="js/jquery-1.11.2.min.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+    <script type="text/javascript">
+    function test(page,success) 
+    {
+       console.log(1);
+       $.ajax({
+           url: './ajax/a.php',
+           data: {param1: 'value1'},
+           dataType: 'json',
+           type: 'POST',
+           cache: false,
+           beforeSend: function() 
+           {
+               console.log('a');
+           },
+           success: function(data) 
+           {
+               console.log('b');
+               if(typeof success == 'function') // 容错处理
+               {
+                   success.call(this,data);
+               }
+           },      
+           complete: function() 
+           {
+               // console.log('d');
+           } 
+       });
+
+    }
+    test(1,function(data){
+        // 以上确保test执行完毕，把数据拖回来。
+        //执行lazyload
+        console.log(123);
+        console.log(data);
+    });
+    console.log(2);
+    
+</script>
+
+</body>
+</html>

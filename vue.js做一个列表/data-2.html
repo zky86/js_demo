@@ -1,0 +1,24 @@
+<html>
+<script type="text/javascript" src='./vue.js'></script>
+<body>
+
+    <!-- 这是我们的 View -->
+    <div id="example-1">
+        Hello {{ name }}!
+    </div>
+
+</body>
+<script>
+    //一般写法
+    var exampleVM = new Vue({
+        el: '#example-1',
+        data: function(){
+            return{
+                name : 'vue.js'
+            }
+        }
+    });
+
+    //exampleVM.name = 'mvvm'
+</script>
+</html>

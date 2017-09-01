@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+function class1()
+{
+    console.log(this);
+    this.name = function()
+    {
+        alert("class1的方法name()");
+    }
+}
+
+var dd = new class1();
+
+function class2()
+{
+  
+    class1.call(this);//要想实现class2继承class1 this就是当前对象class2。
+    
+    console.log(this);
+}
+
+var cl = new class2();
+
+cl.name();//class2继承了class1，class2是父类。调用父类的方法
+
+
+</script>
+</body>
+</html>

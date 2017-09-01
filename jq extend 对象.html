@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+</head>
+    <script type="text/javascript" src="jquery.js"></script>
+<body style="height:500px">
+
+<div id="test">测试</div>
+
+<script type="text/javascript">
+
+//extend 使用方法
+var  a = 
+{
+    age : "5"
+};
+var  b = 
+{
+    name : "6"
+};
+var c = $.extend(true, a, {age:"7"});
+console.log(c);
+
+
+// 静态方法，类，相当于 $.ajax
+$.extend({
+    add : function  (a,b) {
+        return a+b
+    }
+})
+console.log($.add(2,3));
+
+
+//对象方法 多个方法 
+// $.fn.extend({
+//     add : function  () {
+//         console.log(333);
+//     }
+// })
+
+//$('xx').xx() 使用
+// $("#test").click(function(event) {
+//         $(this).add()
+// });
+
+
+//对象方法 单个方法
+$.fn.code = function (options){
+    var options = options || {};
+
+    //初始化
+    var default_val = {
+        name : 'zky'
+    }
+
+    var obj = $.extend(true, default_val, options);
+    console.log(obj);
+};
+
+jQuery.code = {
+    name : "zky",
+    age : "123",
+    do123 : function(){
+        console.log(123);
+    }
+}
+console.log(jQuery.code.name);
+
+
+// $('xx').xx() 使用
+$("#test").click(function() {
+    $(this).code({name:1})
+});
+
+
+//冒泡，停止冒泡
+// $("body").click(function(event) {
+//         console.log(888);
+// });
+
+// $("#test").click(function(event) {
+//         event.stopPropagation();
+//         console.log(999);
+// });
+
+
+</script>
+</body>
+</html>

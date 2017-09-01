@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<style type="text/css">
+	#showPhoto{
+		position: fixed; 
+		left: 50%;
+		top: 50%;
+		margin-left: -310px;
+		margin-top: -286px
+	}
+</style>
+	<title>网络相册</title>
+	<link href="16.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" src="jquery.min.js"></script>
+	<script language="javascript">
+
+$(function(){
+	var num,len = $('.thumb').length;
+	function imgswt(){
+		$('#showPic > img').attr('src','photo/'+num+'.jpg');
+	}
+
+	$('.thumb').click(function() {
+		num = $(this).find("img").attr('dage');
+		imgswt();
+		$('#showPhoto').show(300);
+	});
+	$('#close').click(function(){
+		$('#showPhoto').hide(300);
+	})
+
+	$('#prev').click(function() {
+		if(num == 1){
+			alert('已经是第一张了');
+		}else{
+			num = parseInt(num)-1;
+			imgswt();
+		}
+	});
+	$('#next').click(function() {
+		if(num == len ){
+			alert('已经是最后一张了');
+		}else{
+			num = parseInt(num)+1;
+			imgswt();
+		}
+	});
+});
+
+</script>
+</head>
+<body>
+
+
+
+
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/1.jpg" dage=1 ></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/2.jpg" dage=2></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/3.jpg" dage=3></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/4.jpg" dage=4></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/5.jpg" dage=5></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/6.jpg" dage=6></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/7.jpg" dage=7></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/8.jpg" dage=8> </a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/9.jpg" dage=9></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/10.jpg" dage=10></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/11.jpg" dage=11></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/12.jpg" dage=12></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/13.jpg" dage=13></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/14.jpg" dage=14></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/15.jpg" dage=15></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/16.jpg" dage=16></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/17.jpg" dage=17></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/18.jpg" dage=18></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/19.jpg" dage=19></a>
+	</div>
+	<div class="thumb pt">
+		<a href="#"><img src="photo/thumb/20.jpg" dage=20></a>
+	</div>
+
+
+	<div id="showPhoto" style="display:none">
+		<!-- 显示大图 -->
+		<img src="close.jpg" id="close">
+		<!-- 面板中的关闭按钮 -->
+		<div id="showPic"><img></div>
+		<div id="bgblack"></div>
+		<!-- 用来显示透明的黑色背景 -->
+		<div id="navigator">
+			<span id="prev"><< 上一幅</span>
+			<span id="next">下一幅 >></span>
+		</div>
+	</div>
+</body>
+
+</html>

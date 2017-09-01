@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<style type="text/css">
+    .new{height: 1800px;}
+    #test{width: 100px; height: 100px;background-color: #000;color: #fff}
+</style>
+
+
+
+<div class="new"></div>
+
+<div id="test">测试</div>
+
+<script type="text/javascript">
+var test = document.getElementById('test');
+var ele = document.createElement('img');
+ele.src = 'www.hao123.com';
+test.appendChild(ele);
+
+
+
+
+
+
+</script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+
+
+<form action='#' method='get'>
+<input type='hidden' value='123' name='testing' />
+<input type='button' id='test' value="提交"/>提交
+</form>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#test').click(function(){
+        return false ;
+    })
+})
+</script>
+
+
+</body>
+</html>   

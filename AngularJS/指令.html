@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <script src="./angular.min.js"></script>
+
+<!--    <div ng-app="" ng-init="firstName='John'">
+     <p>在输入框中尝试输入：</p>
+     <p>姓名：<input type="text" ng-model="firstName"></p>
+     <p>你输入的为： {{ firstName }}</p>
+   </div>
+ -->
+
+<!--     <div ng-app="" ng-init="names=['Jani','Hege','Kai']">
+      <p>使用 ng-repeat 来循环数组</p>
+      <ul>
+        <li ng-repeat="x in names">
+          {{ x }}
+        </li>
+      </ul>
+    <div> -->
+
+    <div ng-app="" ng-init="names=[
+    {name:'Jani',country:'Norway'},
+    {name:'Hege',country:'Sweden'},
+    {name:'Kai',country:'Denmark'}]">
+
+    <p>循环对象：</p>
+    <ul>
+      <li ng-repeat="x in names | orderBy:'name' ">
+        {{ x.name + ', ' + x.country  }}
+      </li>
+    </ul>
+
+
+
+</body>
+</html>

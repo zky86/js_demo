@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="./css/reset.css"  type="text/css" rel="stylesheet" />
+    <link href="./css/css.css"  type="text/css" rel="stylesheet" />
+    <script src="./js/jquery-1.11.2.min.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+<div class="w1000">
+
+    <div class="p1th">头部</div>
+
+    <div class="top-tab hide" data-role="top-tab">
+
+        <ul class="tab-ul clearfix">
+
+            <li class="tab-li tab-first " mod="data-1">
+                <a class="li-item" href="#data-1">测试1</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="javascript:;">下拉1</a></li>
+                </ul>
+            </li>
+
+            <li class="tab-li" mod="data-2">
+                <a class="li-item" href="#data-2">测试2</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="javascript:;">下拉2</a></li>
+                </ul>
+            </li>
+
+            <li class="tab-li" mod="data-3">
+                <a class="li-item" href="#data-3">测试3</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="javascript:;">下拉3</a></li>
+                </ul>
+            </li>
+
+            <li class="tab-li" mod="data-4">
+                <a class="li-item" href="#data-4">测试4</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="#cloudbridge">下拉4</a></li>
+                </ul>
+            </li>
+
+            <li class="tab-li" mod="data-5">
+                <a class="li-item" href="#data-5">测试5</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="javascript:;">下拉5</a></li>
+                </ul>
+            </li>
+
+            <li class="tab-li tab-last" mod="data-6">
+                <a class="li-item" href="#data-6">测试6</a>
+                <ul class="tab-dropdown-list">
+                    <li><a href="javascript:;">下拉6</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="service-item">
+
+        <h4 class="tab-content" id="data-1" mod="data-1" data-role="tab-content">测试1</h4>
+        <div class="service-inner">
+            <div class="inner-item">
+                <p>内容1</p>
+            </div>
+        </div>
+
+        <h4 class="tab-content" id="data-2" mod="data-2" data-role="tab-content">测试2</h4>
+        <div class="service-inner">
+            <div class="inner-item">
+                <p>内容2</p>
+            </div>
+        </div>
+
+        <h4 class="tab-content" id="data-3" mod="data-3" data-role="tab-content">测试3</h4>
+        <div class="service-inner">
+            <div class="inner-item">
+                <p>内容3</p>
+            </div>
+        </div>
+
+        <h4 class="tab-content" id="data-4" mod="data-4" data-role="tab-content">测试4</h4>
+        <div class="service-inner">
+            <div class="inner-item" >
+                <p>内容4</p>
+            </div>
+        </div>
+
+        <h4 class="tab-content" id="data-5" mod="data-5" data-role="tab-content">测试5</h4>
+        <div class="service-inner">
+            <div class="inner-item" >
+                <p>内容5</p>
+            </div>
+        </div>
+
+        <h4 class="tab-content" id="data-6" mod="data-6" data-role="tab-content">测试6</h4>
+        <div class="service-inner">
+            <div class="inner-item">
+                <p>内容6</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="p1th mt10">底部</div>
+
+
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+    /**
+    * tab对应显示组件
+    * @authors 汤圆
+    * @date    2016-07-28 10:53:03
+    * options:  
+    * nav_ele_arr: '导航节点',
+    * con_ele_arr : '对应内容的节点'
+    */
+   
+    // 封装模块
+    var tab_obj = 
+    {
+        // 初始化
+        init : function (options) 
+        {
+            var self = this;
+            this.nav_ele_arr = options.nav_ele_arr || {};
+            this.con_ele_arr = options.con_ele_arr || {};
+            self.setup_event(); 
+        },
+
+        // 事件
+        setup_event : function() 
+        {
+            var self = this;
+            self.return_data_json();
+            self.go_to();
+        },
+
+        // 返回模块json数组
+        return_data_json : function() 
+        {
+            var self = this;
+            self.mod_pos_arr = []; //data-json 收集content模块区域位置参考
+
+            self.con_ele_arr.each(function(){
+                var top = parseInt($(this).offset().top) - parseInt(self.nav_ele_arr.height()); //减去nav高度
+                self.mod_pos_arr.push({
+                    id : $(this).attr('mod'),
+                    y : top
+                });
+            });
+            console.log(self.mod_pos_arr);
+        },
+
+        go_to : function() 
+        {
+            var self = this;
+            $(window).scroll(function(e){
+
+                var pos_top = $(this).scrollTop();
+                var y = self.mod_pos_arr[0]['y'];
+
+                // 给bar添加fix样式，目的显示
+                if(pos_top > y)
+                {
+                    self.nav_ele_arr.removeClass('hide').addClass('tab-fixed');
+                }
+                else
+                {
+                   self.nav_ele_arr.addClass('hide').removeClass('tab-fixed');
+                }         
+
+                // 对应tab显示当前状态
+                for(var i = 0; i < self.mod_pos_arr.length; i++)
+                {
+                    // console.log(self.mod_pos_arr[i]['y']);
+                   if(self.mod_pos_arr[i]['y'] <= pos_top)
+                   {
+                       var mod = self.mod_pos_arr[i]['id'];
+                       self.nav_ele_arr.find('li').removeClass('active'); 
+                       self.nav_ele_arr.find('li[mod='+ mod +']').addClass('active');
+                   }
+                }
+
+            });
+        }
+    }
+
+
+    // 执行
+    tab_obj.init({
+        nav_ele_arr : $('[data-role="top-tab"]'),  //nav 个数
+        con_ele_arr : $('[data-role="tab-content"]') //content 个数
+    });
+
+});
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+    <link href="css/zt.css"  type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+
+
+
+
+<a href="#">1</a>
+<p>2</p>
+
+<div class="test">
+<a href="#" class="ee">6</a>
+<a href="#" class="bb">7</a>
+<a href="#" class="cc">8</a>
+<p>tete</p>
+</div>
+
+<script type="text/javascript">
+    (function(){
+        $('.test')
+        .on('click','.ee', function() {alert( alert(1))})
+        .on('click','.bb', function() {alert( alert(2))})
+        ;
+    })()
+</script>
+
+<script type="text/javascript">
+$.fn.extend({
+    clk: function() {
+        alert('2');
+    }
+}); 
+</script>
+
+<script type="text/javascript">
+(function(){
+    $.clk();
+})()
+</script>
+</body>
+</html>

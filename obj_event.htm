@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>obj</title>
+<link href="css/zt.css" type="text/css" rel="stylesheet" />
+<script src='js/jquery.js' type='text/javascript'></script>
+
+</head>
+<body>
+<div id="test" test >测试</div>
+<script type="text/javascript">
+
+(function($,window){
+
+    //  最外层全局jq对象 注意  _self 与 self 是不同对象
+    var _self = $({});
+
+    // 定义对象方式
+    // function obj() 
+    // {
+    //     var self = this;
+    //     self.init();
+    // }
+
+    var obj = function()
+    {
+        var self = this;
+
+        //  初始化
+        self.init();
+    };
+
+
+    obj.prototype = 
+    {
+        refresh : function() 
+        {
+            var self = this;
+            self.action(1);
+
+        },
+
+        init : function() 
+        {
+            var self = this;
+
+            // 初始化容器
+            _self.$test = $('[test]');
+
+            // 安装事件
+            self.setup_event();
+
+            self.refresh();
+        },
+
+        setup_event : function() 
+        {
+            var self = this;
+
+            // 点击触发
+            _self.$test.on('click', function(event) {
+                console.log(1);
+            });
+
+            // ajax完成触发事件
+            _self.on('success',function(e,res)
+            {
+                console.log(res);
+            });
+
+        },
+
+        action : function(params) 
+        {
+            var self = this;
+            // _self.ajax_obj = $.ajax 赋值全局对象属性
+
+            $.ajax({
+                url: './ajax/obj_event.php',
+                data: {
+                    params: params
+                },
+                dataType: 'html',
+                type: 'POST',
+                cache: false,
+                beforeSend: function() 
+                {
+                    
+                },
+                success: function(res) 
+                {
+                    _self.trigger('success',res);
+                },    
+                error: function() 
+                {
+                    
+                },    
+                complete: function() 
+                {
+                    
+                } 
+            });
+            
+            // console.log(_self.ajax_obj);
+
+        }
+
+    }
+
+    _self.new_obj = new obj();
+
+
+})($,window);
+
+
+
+</script>
+
+</body>
+</html>

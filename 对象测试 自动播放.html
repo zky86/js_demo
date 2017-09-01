@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="jquery.js"  type="text/javascript" ></script>
+</head>
+<body>
+
+<div id="zt">暂停</div>
+<script type="text/javascript">
+
+    // function obj_fn() 
+    // {
+    //     this.name = "zky";
+    //     this.age = "23";
+    //     this.say = function(){
+    //         console.log('hello1');
+    //     }
+    // }
+
+    // obj_fn.prototype.say = function()
+    // {
+    //     console.log('hello2');
+    // }
+    
+    // var obj_1 = new obj_fn();
+
+    // console.log(obj_1.say());
+
+    // obj_1.say = function()
+    // {
+    //     console.log('hello3');
+    // }
+
+    // console.log(obj_1.say());
+
+
+    
+
+$(document).ready(function() {
+
+
+    // function auto_play(clearTime) 
+    // {
+    //     var self = this;
+
+    //     this.add = function()
+    //     {
+    //         this.init = 0 ;
+    //         this.init++ ;
+    //         console.log(this.init);
+    //     };
+    //     
+    //     this.clearTime = setTimeout(function(){
+    //         self.add()
+    //     }, 1000)  错误版本，切记  setTimeout 要放到函数里面，调用自身
+    // }
+
+    function auto_play(clearTime) 
+    {
+
+        var self = this;
+        this.add = function()
+        {
+            this.init = 0 ;
+            this.init++ ;
+            console.log(this.init);
+            this.clearTime = setTimeout(function(){
+                self.add()
+            }, 1000)
+        };
+
+        this.add();
+    }
+
+
+    // function auto_play(clearTime) 
+    // {
+    //     var self = this;
+    //     this.add(clearTime);
+
+    //     $('#zt').mouseover(function() {
+    //         clearTimeout(self.clearTime)
+    //     });
+
+    //     $('#zt').mouseout(function() {
+    //         self.clearTime = setTimeout(function()
+    //         {
+    //             self.add();
+    //         },1000);
+    //     });
+
+    // }
+    // auto_play.prototype.add = function(clearTime)
+    // {
+    //     var self = this ;
+    //     this.init = 0 ;
+    //     this.init++ ;
+    //     console.log(this.init);
+    //     self.clearTime = setTimeout(function()
+    //     {
+    //         self.add();
+    //     },1000);
+    // }
+
+    var auto1 = new auto_play('auto1');
+
+});
+
+</script>
+</body>
+</html>

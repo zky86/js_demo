@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh" class="bill-wrapper">
+<head>
+    <title>账单</title>    
+    {%$wap_global_head%}
+    
+    
+    <link rel="stylesheet" type="text/css" href="https://yypay.yueus.com/pages/static/wap/style/bill/bill.96318b9.css">
+
+    
+</head>
+<body class="bill-wrapper" >
+	<main role="main" id="yypay-bill-container" >
+	    <section id="global-header"  class="fn-hide"></section>
+	    <div class="page-view" data-role="page-container" v-cloak>
+	    	<div class="yue-ui-tab-menu">
+		        <ul class=" ui-border-b nav-list list f16  color-666 ui-border-b" id="nav-bar" :class="[is_fixed?fixed:'']">	            
+		            <li :class="[type=='trade'?'cur':'']" v-model="type" v-on:click="change_list('trade',0)"><p class="txt border-main-color">交易记录</p></li>
+		            <li :class="[type=='recharge'?'cur':'']" v-model="type" v-on:click="change_list('recharge',1)"><p class="txt border-main-color">充值记录</p></li>
+		            <li :class="[type=='withdraw'?'cur':'']" v-model="type" v-on:click="change_list('withdraw',2)"><p class="txt border-main-color">提现记录</p></li>
+		        </ul>
+		    </div>
+	        <div class="ui-tab " >   
+	            <div data-role="has-data">
+	                <ul class="ui-tab-content ">
+	                    <li v-show="type=='trade'" data-role="trade">
+	                    	<list-trade-com v-ref:trade></list-trade-com>              	
+	                    </li>
+	                    <li v-show="type=='recharge'" data-role="recharge">
+	                    	<list-recharge-com v-ref:recharge></list-recharge-com>              	
+	                    </li>
+	                    <li v-show="type=='withdraw'" data-role="withdraw">
+	                    	<list-withdraw-com v-ref:withdraw></list-withdraw-com>	                    	
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+
+	    </div>  	    
+	</main>
+</body>
+
+
+{%$wap_global_footer%}
+
+<script type="text/javascript" src="https://yypay.yueus.com/pages/static/wap/modules/vue_com/list.2f65fcb.js"></script>
+
+<!--
+@message 
+注意：
+引用模块必须在wap_global_footer之后
+使用本地缓存的组件，使用方法 如： require.syncLoad('wap-yypay:xxxxxx')
+-->
+<script type="text/javascript">	
+	(function()
+	{
+		var frozen  = require.syncLoad('wap-yypay:global/frozen/frozen');
+		var utility = require.syncLoad('wap-yypay:global/utility/index');
+		var list_com = require('wap-yypay:modules/vue_com/list');
+		var template = "<ul class=\"ui-list ui-list-text \" >\r\n\t<template v-for=\"$item in data.list\">\r\n\t\t\r\n\t\t<a href=\"./detail.php?ref_module_id=<%%$item.items.ref_module_id%%>&ref_module_type=<%%$item.items.ref_module_type%%>\">\r\n\t\t    <li class=\"ui-border-t\">\r\n\t\t    \t<div class=\"ui-list-info\">\r\n\t\t    \t   <%%$item.content1%%>\r\n\t\t    \t</div>\r\n\t\t    \t<div >\r\n\t\t    \t\t<%%$item.content2%%>\r\n\t\t    \t</div>\r\n\t\t    </li>\r\n\t\t</a>\r\n\t</template>\t\t\t\t\t\t\t\t\t\r\n</ul>";
+		
+		// ES6 模板字符串
+	    Vue.config.delimiters = ['<%', '%>'];
+	    Vue.config.unsafeDelimiters = ['<%%','%%>'];
+	    console.log(list_com)
+	    var list_vue = new Vue
+	    ({
+	    	el : '#yypay-bill-container',
+	    	ready : function()
+	    	{
+	    		var self = this;
+	    		
+	    		console.log(self.$children)
+
+	    		self.$refs[self.$data.type].$emit('list-com:refresh',{type:self.$data.type});
+
+	    		var $nav = document.querySelector('#nav-bar');
+	    		var nav_top  = $nav.offsetTop;
+
+	    		window.onscroll = function()
+	    		{
+	    			var scrll_top = Math.max(window.pageYOffset || 0,document.body.scrollTop);
+
+	    			self.$data.is_fixed = scrll_top>nav_top ? true : false;
+	    		}
+	    	},
+	    	data : function()
+	    	{
+	    		var json = {%$page_params%};
+
+	    		return json.res;
+	    	},
+	    	methods : 
+	    	{ 
+	    		/**
+	    		 * 切换容器
+	    		 * @param  {[type]} type [description]
+	    		 * @return {[type]}      [description]
+	    		 */
+	    		change_list : function(type,index)
+	    		{
+	    			var self = this;	 	    		  
+
+	    			if(type == self.$data.type)
+	    			{
+	    				return;
+	    			} 			
+
+	    			self.$data.type = type;
+
+	    			if(self.$refs[type].data.list.length)
+	    			{
+	    				return;
+	    			}
+
+	    			self.$refs[type].$emit('list-com:refresh',{page : 1,type:type});
+
+	    		},	    		
+	    	},
+	    	computed : {},
+	    	components : 
+	    	{
+	    		'list-trade-com' : list_com.init
+	    		({
+	    			url : window.__YYPAY_GLOBAL['AJAX_DOMAIN']+'bill/get_bill.php',
+	    			template : template,	    			
+	    			data : function()
+	    			{
+	    				var data = 
+	    				{
+	    					ajax_params : {%$ajax_params%}.res,	    					
+	    					data : 
+	    					{
+	    						code : 1,
+		    					list : [],
+		    					msg : '',
+		    					page : 1,
+		    					has_next_page:false
+	    					}
+	    				};
+
+	    				return data
+	    			}
+	    		}),
+	    		'list-recharge-com' : list_com.init
+	    		({
+	    			url : window.__YYPAY_GLOBAL['AJAX_DOMAIN']+'bill/get_bill.php',
+	    			template : template,	    			
+	    			data : function()
+	    			{
+	    				var data = 
+	    				{
+	    					ajax_params : {%$ajax_params%}.res,	    					
+	    					data : 
+	    					{
+	    						code : 1,
+		    					list : [],
+		    					msg : '',
+		    					page : 1,
+		    					has_next_page:false
+	    					}
+	    				};
+
+	    				return data
+	    			}
+	    		}),
+	    		'list-withdraw-com' : list_com.init
+	    		({
+	    			url : window.__YYPAY_GLOBAL['AJAX_DOMAIN']+'bill/get_bill.php',
+	    			template : template,	    			
+	    			data : function()
+	    			{
+	    				var data = 
+	    				{
+	    					ajax_params : {%$ajax_params%}.res,	    					
+	    					data : 
+	    					{
+	    						code : 1,
+		    					list : [],
+		    					msg : '',
+		    					page : 1,
+		    					has_next_page:false
+	    					}
+	    				};
+
+	    				return data
+	    			}
+	    		})	    		
+	    	}
+	    });	
+	})();
+</script>
+
+{%$wap_global_tj%}
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+</head>
+
+<body>
+<script type="text/javascript">
+
+var reg = /^\d+$/ ;
+var get_sms_code = "12358a"
+var is_num = get_sms_code.match(reg); //get_sms_code 是字符串
+
+console.log(is_num); //null
+
+//第二种
+var phone_reg = new RegExp(/^[0-9]{11}$/);
+var new_phone_test = phone_reg.test(15975563431); //get_alipay 是字符串
+
+console.log(new_phone_test); //true
+
+</script>
+
+
+</body>
+</html>   

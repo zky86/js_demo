@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script type="text/javascript" src='./vue.js'></script>
+    <script type="text/javascript" src='./vue-resource.js'></script>
+</head>
+<body>
+
+<ul id="example-1">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+
+</body>
+<script>
+
+    var example1 = new Vue({
+        el: '#example-1',
+        ready : function(){
+            this.$emit('fetch')
+        },
+        data : function(){
+            return {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ],
+                page : 1
+            }
+        },
+        events : {
+            'fetch' : function(){
+                this.$http.post(
+                    '../ajax/sale_list_list.php',
+                    {page:this.page,search_title:'',category_id:''},
+                    {
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        },
+                        emulateJSON: true
+                    }
+                ).then(function(response){
+                    //请求成功
+                    //进行页码++等数据处理
+                    //concat或push对象进data.items刷新数据
+                    var new_data = response.items
+                    this.$data.items = this.$data.items.concat(new_data);
+                }, function(response) {
+                    //请求失败
+                });
+            }
+        },
+        methods : {
+
+        }
+    })
+</script>
+</html>

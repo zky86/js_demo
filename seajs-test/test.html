@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+    <link href="css/zt.css"  type="text/css" rel="stylesheet" />
+    <script src="./sea-modules/seajs/2.2.0/sea.js"></script>
+</head>
+
+<body>
+
+
+
+<script type="text/javascript">
+seajs.config({
+    base: "./sea-modules/",
+    alias: {
+      "jquery": "jquery/jquery/1.10.1/jquery.js",
+      "test": "test.js",
+      "test2": "test2.js"
+    }
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    //seajs.use("./test.js")
+</script>
+
+<script>
+
+
+
+
+seajs.use(['jquery','test','test2'], function($,ee,oo) {
+      console.log(ee)
+     var gogo = new ee();
+     console.log(gogo);
+     alert(gogo.name);
+     // var ddd = new ee();
+     // console.log(ddd);
+     // alert( ddd.name );
+     
+
+    // var  oooo = new ee();
+    //  oooo.name
+    //  alert(oooo.name)
+    //  console.log(oooo)
+    // //oo();
+});
+</script>
+
+</body>
+</html>

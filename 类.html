@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="new"></div>
+<div id="test">测试</div>
+<script type="text/javascript">
+    var Class = {
+        create : function(){
+            return function (){
+                this.initialize.apply(this.arguments);
+            }
+        }
+    };
+    var myClass = Class.create();
+    myClass.prototype = {
+        x : function (){
+            return 1 ;
+        },
+        y : function (){
+            return 2 ;
+        },
+        initialize : function(){
+            alert(this.x+this.y)
+        }
+    };
+    var mclass = new myClass;
+</script>
+</body>
+</html>   

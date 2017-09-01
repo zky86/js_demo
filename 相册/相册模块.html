@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<title>无标题文档</title>
+	<style>
+*{ padding:0; margin:0}
+
+body{
+}
+
+.rbox{float: left; padding: 20px 0 0 100px;width: 600px; text-align: center}
+.max-img{padding: 20px 0 20px 20px;height: 450px;}
+.photos{display: none; }
+#row,#num{
+	font-weight: bold; 
+	font-size: 14px;
+	color: red
+}
+
+
+
+img{ border:none}
+body {
+	margin: 33px 38px;
+	font: 14px/1.7 Verdana,Arial,sans-serif;
+}
+
+a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #0F4780;
+	text-decoration: none;
+}
+
+#breadcrumbButong {
+	margin-bottom: 33px;
+}
+
+/* =S Pic List */
+#picGallery {
+	float: left;
+	width: 326px;
+	margin: 32px 10px 50px 0;
+}
+
+#picGallery .group {
+	border: 1px solid #666;
+	margin-bottom: 10px;
+}
+
+#picGallery .title {
+	margin: 0;
+	padding: 0.6em;
+	background: #BBB;
+	font-size: 14px;
+}
+
+#picGallery .close .title {
+	cursor: pointer;
+}
+
+#picGallery .photos {
+	overflow: hidden;
+	padding: 3px;
+	_zoom: 1;
+}
+
+#picGallery .photos img {
+	float: left;
+	width: 100px;
+	height: 60px;
+	padding: 3px;
+}
+
+#picGallery a.current img {
+	padding: 1px;
+	border: 2px solid #C96500;
+}
+
+#picGallery .close .photos {
+	display: none;
+}
+
+#picGallery .close .title {
+	background: #DDD;
+}
+/* =E Pic List */
+
+/* =S Pic Show */
+#picShow {
+	position: relative;
+	float: left;
+	width: 500px;
+	min-height: 280px;
+}
+
+#picShow img {
+	width: 500px;
+	vertical-align: top;
+}
+
+#picShow .state {
+	display: none;
+}
+
+#picShow.loading .state {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #000 url("loading.gif") 50% 50% no-repeat;
+	opacity: 0.7;
+	filter:alpha(opacity=70);
+	_height: 58px;
+}
+/* =E Pic Show */
+
+/* =S Pic Action */
+#picAction {
+	margin-left: 336px;
+	padding-top:35px
+}
+
+#picAction .actions {
+	padding: 0 0 12px 204px;
+	line-height: 1;
+}
+
+#picAction .actions span {
+	display: inline-block;
+	margin: 0 5px;
+	border: 10px solid #FFF;
+	border-width: 10px 18px;
+	vertical-align: top;
+	cursor: pointer;
+	*width: 0;
+	*height: 0;
+	*overflow: hidden;
+}
+
+#picAction .actions .left {
+	border-right-color: #BBB;
+}
+
+#picAction .actions .right {
+	border-left-color: #BBB;
+}
+
+.title{ cursor:pointer}
+
+</style>
+	<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+</head>
+<body>
+	<div id="picGallery">
+		<div class="group" date=1>
+			<h2 class="title"  >创意设计图片</h2>
+			<div class="photos" id="picimg" >
+				<a  class="" href="#">
+					<img src="photo/thumb/1.jpg" alt=""   data=1  />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/2.jpg" alt=""   data=2 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/3.jpg" alt=""   data=3 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/4.jpg" alt=""   data=4 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/5.jpg" alt=""   data=5 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/6.jpg" alt=""   data=6 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/7.jpg" alt=""   data=7 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/8.jpg" alt=""   data=8 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/9.jpg" alt=""   data=9 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/10.jpg" alt=""   data=10 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/11.jpg" alt=""   data=11 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/12.jpg" alt=""   data=12 />
+				</a>
+			</div>
+		</div>
+		<div class="group" date=2>
+			<h2 class="title">黑白街景</h2>
+			<div class="photos" id="picimg" >
+				<a  class="" href="#">
+					<img src="photo/thumb/1.jpg" alt=""   data=1 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/2.jpg" alt=""   data=2 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/3.jpg" alt=""   data=3 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/4.jpg" alt=""   data=4 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/5.jpg" alt=""   data=5 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/6.jpg" alt=""   data=6 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/7.jpg" alt=""   data=7 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/8.jpg" alt=""   data=8 />
+				</a>
+			</div>
+		</div>
+		<div class="group" date=3>
+			<h2 class="title">美丽经典的教堂摄影</h2>
+			<div class="photos" id="picimg" >
+				<a  class="" href="#">
+					<img src="photo/thumb/1.jpg" alt=""   data=1 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/2.jpg" alt=""   data=2 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/3.jpg" alt=""   data=3 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/4.jpg" alt=""   data=4 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/5.jpg" alt=""   data=5 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/6.jpg" alt=""   data=6 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/7.jpg" alt=""   data=7 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/8.jpg" alt=""   data=8 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/9.jpg" alt=""   data=9 />
+				</a>
+				<a href="#">
+					<img src="photo/thumb/10.jpg" alt=""   data=10 />
+				</a>
+			</div>
+		</div>	
+	</div>
+
+	<div class="rbox">
+		<div id="page">
+
+			目前第<span id="row">0</span>组 第<span id="num">0</span>张
+		</div>
+		<div class="max-img">
+			<img src="photo/1.jpg" />
+		</div>
+
+		<a id="back" href="javascript:void(0)">上一页</a>&nbsp;&nbsp;
+		<a id="farward" href="javascript:void(0)">下一页</a> 
+	</div>
+
+<script>
+$(document).ready(function(){
+	var row, //第几组
+	num, //第几张
+	len; //图片长度
+	$('.group > .title').click(function(){
+		$('.photos').fadeOut();
+		$(this).siblings().fadeIn(30);
+	})
+	$('.photos > a').click(function(){
+		$('.photos > a').removeClass('current');
+		$(this).addClass('current');
+		num = $(this).find('img').attr('data')
+		row = $(this).parent().parent().attr('date');
+		$('#row').html(row);
+		$('#num').html(num);
+		$('.max-img > img').attr('src', 'photo/'+num+'.jpg');
+	})
+	$('#back').click(function(){
+		len = $('.group').eq(parseInt(row)-1).find('.photos > a').length;
+		if(num == 1){
+			alert('已经是第一张');
+			return false;
+		}{
+			num--;
+			$('.group').eq(parseInt(row)-1).find("a").removeClass('current')
+			$('.group').eq(parseInt(row)-1).find("a").eq(num-1).addClass('current')
+			$('.max-img > img').attr('src', 'photo/'+num+'.jpg');
+			$('#num').html(num);
+
+		}
+	})
+		$('#farward').click(function(){
+		len = $('.group').eq(parseInt(row)-1).find('.photos > a').length;
+		if(num == len){
+			alert('已经是最后一张');
+			return false;
+		}{
+			num++;
+			$('.group').eq(parseInt(row)-1).find("a").removeClass('current')
+			$('.group').eq(parseInt(row)-1).find("a").eq(num-1).addClass('current')
+			$('.max-img > img').attr('src', 'photo/'+num+'.jpg');
+			$('#num').html(num);
+		}
+	})
+})
+</script>
+</body>
+</html>

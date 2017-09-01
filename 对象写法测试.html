@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // var data = 
+        // [
+        //     {'name':"1",'age':'a'},
+        //     {'name':"2",'age':'b'},
+        //     {'name':"3",'age':'c'},
+        //     {'name':"4",'age':'d'},
+        //     {'name':"5",'age':'e'}
+        // ]
+        // var newArr = [];
+        // for (var i = 0; i < data.length; i++) {
+        //     if( i%2 == 0 )
+        //     {
+        //         data[i].iphone = "new";
+        //         newArr.push({
+        //             'ohterName': data[i].name,
+        //             'ohterAge': data[i].age
+        //         })
+        //     }
+        // };
+        // var str = JSON.stringify(newArr);  
+        // var newData = 
+        // [
+        //     "test",'1',"can",'cao'
+        // ]
+        // var str2 = newData.join('+');
+        // alert(str2)
+
+        var zky = 
+        {
+            'name' : 23 ,
+            'obj' : {
+                "age" : 1 ,
+                "place" : "茂名"
+            },
+            say : function ()
+            {
+                var self = this ;
+                
+                console.log(self.getname());
+                
+            },
+            getname : function () 
+            {
+                var self = this ;
+                return  self.name
+            }
+
+        }
+        console.log(zky.obj.age);
+
+        zky.say()
+
+
+        // function test() 
+        // {
+        //     this.name = "zky";
+        //     console.log(this);
+        // }
+
+
+        // function bb() 
+        // {
+        //     test.call(this);
+        // }
+
+        // var abc = new test();
+        // console.log(abc.name);
+
+        // var testdd = new bb();
+        // console.log(testdd.name);
+
+        // var shili = new test();
+        // console.log(shili.name);
+        
+
+
+    </script>
+
+
+</body>
+</html>

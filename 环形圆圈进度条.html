@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+
+</head>
+<script src="jquery.js"  type="text/javascript" ></script>
+<body>
+
+<style type="text/css">
+  
+*{
+    margin: 0;
+    padding: 0px;
+}
+body{
+    /*background-color: #404040*/
+    padding: 50px;
+}
+
+.splashscreens-page .progress-wrap {
+  width: 30px;
+  height: 30px;
+}
+/* line 66, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+.splashscreens-page .progress-radial {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #00c0ff;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(0deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+}
+/* line 76, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+.splashscreens-page .progress-radial.running {
+  -webkit-animation-name: loading-progress-radial;
+  animation-name: loading-progress-radial;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+/* line 81, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+.splashscreens-page .progress-radial.complete {
+  background: -webkit-linear-gradient(0deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  background: linear-gradient(90deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+}
+/* line 85, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+.splashscreens-page .overlay {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 28px;
+  height: 28px;
+  background-color: #404040;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes loading-progress-radial {
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  0% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(0deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  2% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(352.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  4% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(345.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  6% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(338.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  8% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(331.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  10% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(324deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  12% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(316.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  14.0% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(309.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  16% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(302.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  18% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(295.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  20% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(288deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  22% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(280.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  24% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(273.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  26% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(266.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  28.0% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(259.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  30% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(252deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  32% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(244.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  34% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(237.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  36% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(230.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  38% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(223.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  40% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(216deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  42% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(208.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  44% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(201.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  46% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(194.4deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  48% {
+    background: -webkit-linear-gradient(0deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(187.2deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #ffffff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  50% {
+    background: -webkit-linear-gradient(180deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-90deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  52% {
+    background: -webkit-linear-gradient(172.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-82.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  54% {
+    background: -webkit-linear-gradient(165.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-75.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  56.0% {
+    background: -webkit-linear-gradient(158.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-68.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  58.0% {
+    background: -webkit-linear-gradient(151.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-61.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  60% {
+    background: -webkit-linear-gradient(144deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-54deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  62% {
+    background: -webkit-linear-gradient(136.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-46.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  64% {
+    background: -webkit-linear-gradient(129.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-39.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  66% {
+    background: -webkit-linear-gradient(122.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-32.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  68% {
+    background: -webkit-linear-gradient(115.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-25.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  70% {
+    background: -webkit-linear-gradient(108deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-18deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  72% {
+    background: -webkit-linear-gradient(100.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-10.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  74% {
+    background: -webkit-linear-gradient(93.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(-3.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  76% {
+    background: -webkit-linear-gradient(86.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(3.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  78% {
+    background: -webkit-linear-gradient(79.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(10.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  80% {
+    background: -webkit-linear-gradient(72deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(18deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  82% {
+    background: -webkit-linear-gradient(64.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(25.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  84% {
+    background: -webkit-linear-gradient(57.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(32.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  86% {
+    background: -webkit-linear-gradient(50.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(39.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  88% {
+    background: -webkit-linear-gradient(43.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(46.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  90% {
+    background: -webkit-linear-gradient(36deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(54deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  92% {
+    background: -webkit-linear-gradient(28.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(61.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  94% {
+    background: -webkit-linear-gradient(21.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(68.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  96% {
+    background: -webkit-linear-gradient(14.4deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(75.6deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  98% {
+    background: -webkit-linear-gradient(7.2deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(82.8deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+
+  /* line 106, ../../sass/src/photoapp/photoappstyle/_splashscreens.scss */
+  100% {
+    background: -webkit-linear-gradient(0deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), -webkit-linear-gradient(180deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+    background: linear-gradient(90deg, #00c0ff 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00c0ff 50%, #ffffff 50%, #ffffff);
+  }
+}
+
+</style>
+
+<div class="splashscreens-page">
+    <div class="progress-wrap">
+        <div id="J-splashscreens-progress-radial" class="progress-radial">
+            <div class="overlay"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    // (function() {
+    
+    //     var $progressRadial = document.getElementById('J-splashscreens-progress-radial');
+
+    //     var AnimationEnd = function() {
+    //         $progressRadial.className = 'progress-radial complete';
+    //         $progressRadial.removeAttribute('style');
+
+    //         $progressRadial.removeEventListener('animationend', AnimationEnd);
+    //         $progressRadial.removeEventListener('webkitAnimationEnd', AnimationEnd);
+    //     };
+
+    //     $progressRadial.addEventListener('animationend', AnimationEnd, false);
+    //     $progressRadial.addEventListener('webkitAnimationEnd', AnimationEnd, false);
+
+    //     setTimeout(function() {
+    //         var timeArr = [1, 1.5, 2, 2.25, 2.5, 3, 3.25, 3.5];
+    //         var timeMS = (timeArr[0]*1000) + 'ms';
+
+    //         $progressRadial.style.animationDuration = timeMS;
+    //         $progressRadial.style.webkitAnimationDuration = timeMS;
+    //         $progressRadial.className = 'progress-radial running';
+    //     }, 0);
+    // })();
+
+$(document).ready(function() {
+    
+    var AnimationEnd = function () 
+    {
+        $(this).addClass('progress-radial complete');
+        $(this).removeAttr('style');
+    }
+
+    $('#J-splashscreens-progress-radial').on('webkitAnimationEnd', AnimationEnd);
+
+    setTimeout(function() {
+        var timeArr = [1, 1.5, 2, 2.25, 2.5, 3, 3.25, 3.5];
+        timeArr = timeArr.sort(function() {return Math.random()>0.5?-1:1;});
+        var timeMS = (timeArr[0]*1000) + 'ms';
+        $('#J-splashscreens-progress-radial').css('webkitAnimationDuration', timeMS);
+        $('#J-splashscreens-progress-radial').addClass('progress-radial running');
+    }, 0)
+});
+
+
+
+</script>
+
+
+</body>
+</html>

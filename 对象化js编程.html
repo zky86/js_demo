@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<script src="jquery-1.11.2.min.js"  type="text/javascript" ></script>
+</head>
+<body>
+测试
+<script type="text/javascript">
+
+    // 定义一个对象
+    var _self = {} ;
+
+    // 默认参数
+    var defaults=
+    {
+        title : '付款'
+    };
+
+    // 获取参数
+    _self.quotes_id = $('#quotes_id').val();
+
+
+    // 初始化dom
+    _self.$page_container = $('[data-role="page-container"]');
+
+
+    // 构造函数 
+    var obj = function() 
+    {
+        var self = this ;
+        self.init();
+    }
+
+    // 添加方法与属性
+    obj.prototype = 
+    {
+        init : function () 
+        {
+            var self = this ;
+
+            // 安装事件
+            self.setup_event();
+        },
+
+        setup_event : function () 
+        {
+
+            var self = this ;
+
+            // 收集DOM
+            _self.$pay_li = $('[data-role="pay-li"]');
+            _self.$select_price = $('[data-role="select-recharge-price"]');
+            _self.$recharge_btn = $('[data-role="recharge-btn"]');
+
+            // 在这里写方法
+            console.log(2);
+        }
+    }
+
+    // 实例
+    var test = new obj ;
+
+</script>
+
+
+
+</body>
+</html>
