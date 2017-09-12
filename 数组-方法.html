@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/zt.css"  type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+<script type="text/javascript">
+
+///indexOf()方法返回在该数组中第一个找到的元素位置，如果它不存在则返回-1。
+var arr = ['apple','orange','pear'];
+console.log(arr.indexOf("orange"));
+
+
+
+
+var arr = [
+    {"name":"apple", "count": 2},
+    {"name":"orange", "count": 5},
+    {"name":"pear", "count": 3},
+    {"name":"orange", "count": 16}
+];
+// 该filter()方法创建一个新的匹配过滤条件的数组。
+var newArr = arr.filter(function(item){
+    return item.name === "orange";
+});
+ 
+console.log(newArr);
+
+
+
+
+//map()对数组的每个元素进行一定操作（映射）后，会返回一个新的数组，
+var oldArr = 
+[
+    {first_name:"Colin",last_name:"Toh"},
+    {first_name:"Addy",last_name:"Osmani"},
+    {first_name:"Yehuda",last_name:"Katz"}
+];
+ 
+function getNewArr(){
+    return oldArr.map(function(item,index){
+        item.full_name = [item.first_name,item.last_name].join(" ");
+        return item;
+    });
+}
+ 
+console.log(getNewArr());
+
+
+
+</script>
+
+
+</body>
+</html>   
