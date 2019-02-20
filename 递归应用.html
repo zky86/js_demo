@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+<!-- <script src="js/.js"  type="text/javascript" ></script> -->
+</head>
+<body>
+<script type="text/javascript">
+  var arr = [
+    {
+      a:"a",
+      child : [
+        {
+          b:"b",
+          child : [
+            {
+              c:"c",
+              child : [
+
+              ]
+            }
+            
+          ]
+        },
+        {
+          b_1:"b-1",
+          child : [
+            {
+              c_1:"c-1",
+              child : [
+
+              ]
+            }
+            
+          ]
+        },
+        
+      ],
+    },
+  ]
+  // console.log(arr); 
+
+  // 递归，不能确定json尽头是多少级
+  function digui(data,level){
+    var level = level || 0;
+    level++
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      element.level = level;
+      element.key = level + "-" + index;
+      element.child && element.child.length > 0 && digui(element.child,level)
+    }
+
+    // data.forEach(element => {
+    //   console.log(level);
+    //   console.log(element);
+    //   // element.level = level++
+    //   // _level = (level !== undefined && level !== null) ? level + 1 : 1
+    //   element.level = level
+    //   element.child && element.child.length > 0 && digui(element.child,level)
+    // });
+  }
+  digui(arr);
+  console.log(arr);
+  
+</script>
+</body>
+</html>
