@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://quiz.edm.zaobang.com/soc.html?tdsourcetag=s_pcqq_aiomsg -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+</head>
+<body>
+<h3>WebSocket协议的客户端程序</h3>
+<button id="btConnect">连接到WS服务器</button>
+<button id="btSendAndReceive1">匹配</button>
+<br>
+<!--<button id="btSendAndReceive2">2向WS服务器发消息并接收消息</button>-->
+<!--<button id="q">获取问题1</button>-->
+<button id="ans1">回答A</button>
+<button id="ans2">回答B</button>
+<!--<button id="queResult">问题1结果</button>-->
+<br>
+<br>
+
+<!--<button id="q2">获取问题2</button>-->
+<button id="ans21">回答A</button>
+<button id="ans22">回答B</button>
+<!--<button id="queResult2">问题2结果</button>-->
+<br>
+<br>
+
+<button id="result">最后结果</button>
+<br>
+<button id="btClose">断开与WS服务器的连接</button>
+<div id="val"></div>
+<script>
+    var wsClient = null; //WS客户端对象
+    var uid = 2;
+
+    btConnect.onclick = function () {
+        //连接到WS服务器，注意：协议名不是http！
+        wsClient = new WebSocket('ws://120.55.114.212:9501');
+        wsClient.onopen = function () {
+            console.log('WS客户端已经成功连接到服务器上')
+        }
+    }
+    var roomId = 0;
+
+    var salt = "sdfasdfx23340543564560965673452?.,ghbdfghd]]o[=-\\-\\-[][12~1";
+    btSendAndReceive1.onclick = function () {
+        console.log('connecting ');
+        var msg = {
+            cmd: 'matchGame',
+            uid: uid,
+            expireTime: 1562274276,
+            gameType: 1,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            // console.log(e)
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+            var dd = JSON.parse(e.data);
+            if (dd.data.roomId){
+                console.log(dd.data.roomId)
+                roomId = dd.data.roomId
+            }
+        }
+    }
+
+    /*  btSendAndReceive2.onclick=function () {
+          var msg = {
+              cmd : 'matchGame',
+              uid: 2,
+              expireTime:1562274276,
+              gameType:1,
+          };
+          msg['accessToken']='b3f86fc14faa7e30f78703c5f9a5c5c1';
+          wsClient.send(JSON.stringify(msg));
+          //接收WS服务器返回的消息
+          wsClient.onmessage = function (e) {
+              console.log(e)
+              console.log('WS客户端接收到一个服务器的消息：' + e.data);
+          }
+      }*/
+
+   /* q.onclick = function () {
+        var msg = {
+            cmd: 'question',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 1,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+            var dd = JSON.parse(e.data);
+            ans1 = dd.data.op1;
+            ans2 = dd.data.op2;
+            console.log(ans1);
+            console.log(ans2);
+        }
+    }*/
+
+    ans1.onclick = function () {
+        var msg = {
+            cmd: 'ans',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 1,
+            ans: '回答A',
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }
+    ans2.onclick = function () {
+        var msg = {
+            cmd: 'ans',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 1,
+            ans: '回答B',
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log(ans2);
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }
+
+   /* queResult.onclick = function () {
+        var msg = {
+            cmd: 'queResult',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 1,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }*/
+
+    /*q2.onclick = function () {
+        var msg = {
+            cmd: 'question',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 2,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+            var dd = JSON.parse(e.data);
+            ans1 = dd.data.op1;
+            ans2 = dd.data.op2;
+            console.log(ans1);
+            console.log(ans2);
+        }
+    }*/
+
+    ans21.onclick = function () {
+        var msg = {
+            cmd: 'ans',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 2,
+            ans: ans1,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }
+    ans22.onclick = function () {
+        var msg = {
+            cmd: 'ans',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 2,
+            ans: ans2,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log(ans2);
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }
+
+  /*  queResult2.onclick = function () {
+        var msg = {
+            cmd: 'queResult',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+            q: 2,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }*/
+
+    result.onclick = function () {
+        var msg = {
+            cmd: 'result',
+            uid: uid,
+            expireTime: 1562274276,
+            roomId: roomId,
+        };
+        msg['accessToken'] = 'b3f86fc14faa7e30f78703c5f9a5c5c1';
+        wsClient.send(JSON.stringify(msg));
+        //接收WS服务器返回的消息
+        wsClient.onmessage = function (e) {
+            console.log('WS客户端接收到一个服务器的消息：' + e.data);
+        }
+    }
+
+
+</script>
+
+</body></html>
