@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+<script type="text/javascript">
+  var arr = [
+      [true,true,true],
+      [false,true,true],
+  ]
+  function returnTrue(arr){
+      if(arr.length <= 1){
+          return arr[0]
+      }
+      let ntmp = [];
+      for(var i in arr){
+        ntmp = contrast(arr[i],ntmp)
+      }
+      console.log(ntmp);
+      return ntmp
+  }
+  function contrast(a,b){
+      console.log('a',b);
+      console.log('b',b);
+      let arr =[];
+      if(b.length == 0){
+          return a;
+      }
+      for(var i = 0;i<a.length;i++){        
+          arr[i] = a[i] && b[i] 
+      }
+      return arr
+  }
+
+  returnTrue(arr)
+  // console.log(returnTrue(arr))
+</script>
+</body>
+<style>
+
+</style>
+</html>
