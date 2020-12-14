@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <script >
+     var obj = {
+  "name": "kangyuan_308_02_20201211",
+  "dataSource": {
+    "formTitleImg": "//images.vrm.cn/mx/2020/12/11/4.png",
+    "proList": [
+      {
+        "img": "//images.vrm.cn/mx/2020/12/11/a2.jpg",
+        "title": ""
+      },
+      {
+        "img": "//images.vrm.cn/mx/2020/12/11/a3.jpg",
+        "title": ""
+      },
+      {
+        "img": "//images.vrm.cn/mx/2020/12/11/a4.jpg",
+        "title": ""
+      },
+      {
+        "img": "//images.vrm.cn/mx/2020/12/11/a5.jpg",
+        "title": ""
+      },
+      {
+        "img": "//images.vrm.cn/mx/2020/12/11/a6.jpg",
+        "title": ""
+      }
+    ],
+    "layer_back": {
+      "mainImage": "//images.vrm.cn/dx/2020/10/13/backBg.png",
+      "btn": "立即投保"
+    },
+    "layer_protocol": {
+      "text1": "我已确认并阅读《健康告知》",
+      "btnText": "同意"
+    },
+    "layer_success1": {
+      "titleImg": "https://images.vrm.cn/wu/2020/10/19/znyw-title-img.png",
+      "text": "稍后巴黎天使的专业顾问将与您致电，<br />请留意热线020-85279915",
+      "img": "https://images.vrm.cn/wu/2020/10/19/zhyw-hb.png",
+      "btnText": "点击完善"
+    },
+    "bottom": {
+      "savePremium": "已选一次交清，比月交<span id='savepremium'>最高省461.00元</span>",
+      "right": "立即预约",
+      "timeTxt": "剩余时间",
+      "icon": "//images.vrm.cn/mx/2020/12/11/a7.png"
+    }
+  },
+  "config": {
+    "number0": {
+      "random": 0,
+      "beginText": "已有",
+      "endText": "人预约",
+      "begin": "2580",
+      "mode": 1
+    },
+    "timer0": {
+      "timerValue": "600",
+      "textValue": "#{m|:}#{s|:}#{ms}",
+      "beginText": "",
+      "style": {
+        "item": {
+          "value": {
+            "color": "rgba(51, 51, 51, 1)",
+            "lineHeight": "18px"
+          }
+        },
+        "beginText": {
+          "value": {
+            "color": "rgba(51, 51, 51, 1)"
+          }
+        }
+      },
+      "visible": 1,
+      "endText": ""
+    },
+    "banner": {
+      "hideLogo": 1,
+      "source": "//images.vrm.cn/mx/2020/12/11/a1.jpg",
+      "logo": ""
+    },
+    "form0": {
+      "usualSetting": {
+        "labelType": "text"
+      },
+      "fields": [
+        {
+          "label": "姓名",
+          "prop": "name",
+          "other": {
+            "placeholder": "请输入真实姓名",
+            "sex": {
+              "visible": 0,
+              "type": 0,
+              "text": "男/女",
+              "style": 0,
+              "only": 0
+            }
+          }
+        },
+        {
+          "label": "手机",
+          "prop": "mobile",
+          "other": {
+            "placeholder": "请输入真实号码（已加密）",
+            "captcha": {
+              "type": 0,
+              "activityId": "",
+              "hideMobileCode": 0,
+              "callback": {
+                "type": "none"
+              }
+            }
+          }
+        },
+
+        {
+          "label": "协议",
+          "prop": "agreecCall",
+          "other": {
+            "autoCheck": 0,
+            "autoCheckAfterFinish": 1,
+            "name": "default",
+            "type": 0,
+            "url": "",
+            "company": "",
+            "product": "",
+            "text": "我确保以上信息为本人实名信息，且已阅读并同意",
+            "list": [
+              {
+                "name": "default",
+                "type": 13,
+                "url": "",
+                "company": "广州芭黎天使食品有限公司",
+                "product": "",
+                "beginText": "我确保以上信息为本人实名信息，且已阅读并同意",
+                "text": "《服务协议》",
+                "endText": " "
+              }
+            ]
+          }
+        }
+      ],
+      "promiseText": "前30名可到店享受专业接待及投资方案规划",
+      "submitText": "立即预约",
+      "callback": {
+        "type": "layer_0812",
+        "statistic": {
+          "statistic": "",
+          "isUpdate": 0,
+          "field": "",
+          "value": ""
+        }
+      },
+      "guide": {
+        "enabled": 0
+      }
+    },
+    "layer_back": {
+      "type": "diy",
+      "visible": 0,
+      "name": "后退弹层",
+      "callback": {
+        "delay": 0
+      }
+    },
+    "layer_protocol": {
+      "type": "diy",
+      "visible": 0,
+      "name": "协议弹层",
+      "callback": {
+        "delay": 0
+      }
+    },
+    "layer_success1": {
+      "type": "diy",
+      "visible": 0,
+      "name": "领取成功弹层1",
+      "layerUsual": {
+        "maskClosable": 0
+      },
+      "callback": {
+        "delay": 0
+      }
+    },
+    "layer_0812": {
+      "type": 1,
+      "callback": {
+        "delay": 0,
+        "type": "reload"
+      },
+      "eventType": "005",
+      "visible": 0,
+      "layerSuccess": {
+        "content": "<div style=\"text-align: center;\">稍后巴黎天使的专业顾问将与您致电，<br />请留意热线020-85279915</div>"
+      },
+      "layerUsual": {
+        "width": 570
+      }
+    }
+  },
+  "template": {
+    "backgroundColor": "rgba(223, 193, 159, 1)",
+    "backgroundImage": "",
+    "formCreated": 0,
+    "autoCreated": {
+      "enabled": 0,
+      "dccGuide": {
+        "enabled": 0,
+        "successCb": {
+          "type": "none"
+        },
+        "failCb": {
+          "type": "none"
+        }
+      },
+      "guide": {
+        "enabled": 0
+      },
+      "callback": {
+        "type": "none"
+      }
+    },
+    "goback": {
+      "enabled": 0,
+      "callback": {
+        "type": "none"
+      }
+    },
+    "rmsDefault": 0,
+    "protocolShowTime": 1.5
+  },
+  "other": [
+    {
+      "id": "proListAnother1btnText",
+      "style": {
+        "backgroundColor": "rgba(59, 158, 250, 1)"
+      }
+    },
+    {
+      "id": "layer_success1img",
+      "style": {
+        "display": "none"
+      }
+    },
+    {
+      "id": "layer_success1text",
+      "style": {
+        "marginBottom": "150px"
+      }
+    },
+    {
+      "id": "layerSuccesscontent",
+      "style": {
+        "color": "rgba(59, 59, 59, 1)",
+        "fontSize": "14px",
+        "marginBottom": "20px",
+        "paddingTop": "10px"
+      }
+    },
+    {
+      "id": "layerSuccesstitle",
+      "style": {
+        "marginTop": "20px"
+      }
+    },
+    {
+      "id": "layerSuccesstitleIcon",
+      "style": {
+        "marginTop": "10px"
+      }
+    }
+  ]
+}
+
+console.log(obj);
+// for (x in obj) {
+//    console.log(x);
+//    console.log(Object.keys(obj.config));
+
+// }
+console.log(Object.keys(obj.config));
+console.log(Object.keys(obj.config).filter(
+        (x) => x.includes('layer')&& obj.config[x].type !== 'diy') );
+  </script>
+</body>
+</html>
