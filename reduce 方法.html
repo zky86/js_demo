@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Examples</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- <link href="css/.css"  type="text/css" rel="stylesheet" /> -->
+    <!-- <script src="js/.js"  type="text/javascript" ></script> -->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var line = [
+        {
+          groupId: "547473c1c5c14cb3ad5100364112b8b1",
+          lineList: [
+            {
+              id: "7d0144d7d5a348bc95787c18f8d4238e",
+              from: "1",
+              to: "2",
+            },
+          ],
+        },
+        {
+          groupId: "547473c1c5c14cb3ad5100364112b8b1",
+          lineList: [
+            {
+              id: "4b462944420f4dab9854f74eedef3c46",
+              from: "3",
+              to: "4",
+            },
+          ],
+        },
+        {
+          groupId: "547473c1c5c14cb3ad5100364112b8b1",
+          lineList: [
+            {
+              id: "9504dcda1e184b12bf4756cd2427755f",
+              from: "5",
+              to: "6",
+            },
+          ],
+        },
+      ];
+      const ouput = line.reduce((pre, cur, index) => {
+        console.log("pre", pre);
+        console.log("cur", cur);
+        const item = pre.find((o) => o.groupId === cur.groupId);
+        console.log("item", item);
+        debugger;
+        item
+          ? (item.lineList = item.lineList.concat(cur.lineList))
+          : pre.push(cur);
+
+        return pre;
+      }, []);
+      console.log(ouput);
+    </script>
+  </body>
+</html>
